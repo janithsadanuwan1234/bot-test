@@ -1,4 +1,4 @@
-const { cmd, commands } = require('../command.cjs.cjs');
+const { cmd, commands } = require('../command.cjs');
 const config = require('../config.cjs.cjs');
 const aliveMsg = require('./aliveMsg.cjs');
 const axios = require('axios'); 
