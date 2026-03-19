@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const os = require('os');
-const { runtime } = require('../lib/functions');
+const { runtime } = require('../lib/functions.cjs');
 const config = require("../config.cjs");
 const axios = require('axios'); 
 

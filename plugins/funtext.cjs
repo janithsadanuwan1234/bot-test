@@ -1,5 +1,5 @@
 const { cmd } = require('../command.cjs');
-const { sleep } = require('../lib/functions');
+const { sleep } = require('../lib/functions.cjs');
 
 // --- 🔄 Animated Message Edit Core Function ---
 async function animate(zanta, from, mek, steps, finalEmoji) {

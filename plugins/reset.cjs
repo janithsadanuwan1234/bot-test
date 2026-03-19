@@ -1,5 +1,5 @@
 const { cmd } = require("../command.cjs");
-const { updateSetting } = require("./bot_db");
+const { updateSetting } = require("./bot_db.cjs");
 const config = require("../config.cjs");
 
 cmd({
