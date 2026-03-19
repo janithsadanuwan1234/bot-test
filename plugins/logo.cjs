@@ -1,4 +1,4 @@
-const { cmd, commands } = require('../command');
+const { cmd, commands } = require('../command.cjs');
 const Photo360 = require('abir-photo360-apis');
 
 const effects = {

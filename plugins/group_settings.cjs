@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 
 // --- 🛠️ LID/JID ඇඩ්මින් ප්‍රශ්නය විසඳන Function එක ---
 const getLastDigits = (jid) => {

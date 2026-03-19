@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const axios = require("axios");
 
 const CHANNEL_JID = "120363406265537739@newsletter";

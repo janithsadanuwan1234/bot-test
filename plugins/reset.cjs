@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const { updateSetting } = require("./bot_db");
 const config = require("../config");
 

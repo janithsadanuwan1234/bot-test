@@ -1,6 +1,6 @@
-const { cmd, commands } = require('../command');
-const config = require('../config');
-const aliveMsg = require('./aliveMsg');
+const { cmd, commands } = require('../command.cjs.cjs');
+const config = require('../config.cjs');
+const aliveMsg = require('./aliveMsg.cjs');
 const axios = require('axios'); 
 
 const CHANNEL_JID = "120363406265537739@newsletter"; 

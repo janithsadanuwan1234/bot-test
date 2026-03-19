@@ -1,4 +1,4 @@
-const { cmd } = require('../command');
+const { cmd } = require('../command.cjs');
 const mongoose = require("mongoose");
 
 // Signal Model - Dashboard එකේ Payload එකට ගැලපෙන සේ Strict: false ලෙස

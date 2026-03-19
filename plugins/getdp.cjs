@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 // profilePictureUrl function එකට Baileys client object එක (zanta) අවශ්‍යයි.
 
 cmd(

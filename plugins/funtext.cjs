@@ -1,4 +1,4 @@
-const { cmd } = require('../command');
+const { cmd } = require('../command.cjs');
 const { sleep } = require('../lib/functions');
 
 // --- 🔄 Animated Message Edit Core Function ---

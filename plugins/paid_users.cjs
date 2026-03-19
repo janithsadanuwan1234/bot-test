@@ -1,4 +1,4 @@
-const { cmd } = require('../command');
+const { cmd } = require('../command.cjs');
 const { updateSetting } = require('../plugins/bot_db');
 
 // 🛡️ අවසර ලත් අංක (Owner only)

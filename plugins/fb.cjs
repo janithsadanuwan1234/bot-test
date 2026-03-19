@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const getFbVideoInfo = require("@xaviabot/fb-downloader");
 const config = require("../config");
 

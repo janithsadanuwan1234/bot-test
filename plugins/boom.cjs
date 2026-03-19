@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 
 /**
  * Thappara ganaka delay ekak athi kireema

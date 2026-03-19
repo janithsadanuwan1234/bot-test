@@ -1,5 +1,5 @@
 const gis = require("g-i-s");
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const { translate } = require("@vitalets/google-translate-api");
 const config = require("../config");
 const axios = require("axios");

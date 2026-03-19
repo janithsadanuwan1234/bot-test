@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const { generateForwardMessageContent } = require('@whiskeysockets/baileys');
 
 cmd({

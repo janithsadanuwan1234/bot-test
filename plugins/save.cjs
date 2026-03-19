@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
 
 // 🖼️ SAVE View Once Image/Video Command

@@ -17,15 +17,15 @@ const express = require("express");
 const path = require("path");
 const axios = require("axios");
 const mongoose = require("mongoose");
-const config = require("./config");
+const config = require("./config.cjs");
 const { sms } = require("./lib/msg");
-const { getGroupAdmins } = require("./lib/functions");
-const { commands, replyHandlers } = require("./command");
+const { getGroupAdmins } = require("./lib/functions.cjs");
+const { commands, replyHandlers } = require("./command.cjs");
 
-const { lastMenuMessage } = require("./plugins/menu");
-const { lastSettingsMessage } = require("./plugins/settings");
-const { lastHelpMessage } = require("./plugins/help");
-const { connectDB, getBotSettings, updateSetting } = require("./plugins/bot_db");
+const { lastMenuMessage } = require("./plugins/menu.cjs");
+const { lastSettingsMessage } = require("./plugins/settings.cjs");
+const { lastHelpMessage } = require("./plugins/help.cjs");
+const { connectDB, getBotSettings, updateSetting } = require("./plugins/bot_db.cjs");
 
 const NodeCache = require("node-cache");
 const msgRetryCounterCache = new NodeCache();

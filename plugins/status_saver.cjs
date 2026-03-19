@@ -1,4 +1,4 @@
-const { cmd } = require("../command");
+const { cmd } = require("../command.cjs");
 const { getContentType, downloadContentFromMessage } = require("@whiskeysockets/baileys"); 
 const config = require("../config"); 
 
