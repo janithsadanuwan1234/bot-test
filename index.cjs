@@ -236,7 +236,7 @@ async function loadPlugins() {
     const pluginsPath = path.join(__dirname, "plugins");
     fs.readdirSync(pluginsPath).forEach((plugin) => {
         if (path.extname(plugin).toLowerCase() === ".cjs") {
-            try { require(`./plugins.cjs/${plugin}`); } 
+            try { require(`./plugins/${plugin}`); } 
             catch (e) { console.error(`[Loader] Error ${plugin}:`, e); }
         }
     });
