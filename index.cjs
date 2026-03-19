@@ -18,7 +18,7 @@ const path = require("path");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const config = require("./config.cjs");
-const { sms } = require("./lib/msg");
+const { sms } = require("./lib/msg.cjs");
 const { getGroupAdmins } = require("./lib/functions.cjs");
 const { commands, replyHandlers } = require("./command.cjs");
 
