@@ -1,6 +1,6 @@
 const { cmd, commands } = require("../command.cjs");
 const os = require('os');
-const config = require("../config");
+const config = require("../config.cjs");
 const axios = require('axios'); 
 
 const MENU_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";

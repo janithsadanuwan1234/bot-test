@@ -6,7 +6,7 @@ const ffmpegPath = require('ffmpeg-static');
 const ffmpeg = require('fluent-ffmpeg');
 const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 const axios = require('axios');
-const config = require('../config');
+const config = require('../config.cjs');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 

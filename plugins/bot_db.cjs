@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const config = require("../config");
+const config = require("../config.cjs");
 
 // --- ⚙️ MONGODB URI SETTINGS ---
 const MONGO_URI = "mongodb+srv://janithsaanuwan1234_db_user:janith123@cluster0.jpmjl2g.mongodb.net/?appName=Cluster0";

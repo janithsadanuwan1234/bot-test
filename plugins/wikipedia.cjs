@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const axios = require("axios");
-const config = require("../config");
+const config = require("../config.cjs");
 
 const CHANNEL_JID = "120363233854483997@newsletter"; 
 const DEFAULT_WIKI_IMAGE = "https://cdn.jsdelivr.net/gh/Akashkavindu/ZANTA_MD@main/images/zanta-md.png"; 

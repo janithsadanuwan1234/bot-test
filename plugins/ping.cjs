@@ -1,7 +1,7 @@
 const { cmd } = require("../command.cjs");
 const os = require('os');
 const { runtime } = require('../lib/functions');
-const config = require("../config");
+const config = require("../config.cjs");
 const axios = require('axios'); 
 
 const STATUS_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";

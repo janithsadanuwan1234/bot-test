@@ -1,7 +1,7 @@
 const gis = require("g-i-s");
 const { cmd } = require("../command.cjs");
 const { translate } = require("@vitalets/google-translate-api");
-const config = require("../config");
+const config = require("../config.cjs");
 const axios = require("axios");
 
 // 1. JID Finder

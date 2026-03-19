@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const { getContentType, downloadContentFromMessage } = require("@whiskeysockets/baileys"); 
-const config = require("../config"); 
+const config = require("../config.cjs"); 
 
 cmd(
     {

@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const axios = require("axios");
-const config = require("../config");
+const config = require("../config.cjs");
 
 const CHANNEL_JID = "120363233854483997@newsletter";
 const UNSPLASH_KEY = "NDGysrFUsvz0GvnPU6hYsRyhCeWk6yXYyw2bYvajRpo"; // ඔයා දුන්න Key එක මෙතනට දාන්න

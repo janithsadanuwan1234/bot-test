@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const { updateSetting } = require("./bot_db");
-const config = require("../config");
+const config = require("../config.cjs");
 
 cmd({
     pattern: "reset",

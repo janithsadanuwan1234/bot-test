@@ -1,6 +1,6 @@
 const { cmd } = require("../command.cjs");
 const getFbVideoInfo = require("@xaviabot/fb-downloader");
-const config = require("../config");
+const config = require("../config.cjs");
 
 cmd({
     pattern: "fb",
