@@ -58,7 +58,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Evening 🌃`;
 } else {
   pushwish = `Good Night 🌌`;
-}
+} 
 
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
