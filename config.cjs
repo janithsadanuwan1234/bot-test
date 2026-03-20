@@ -26,5 +26,5 @@ module.exports = {
     ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "false",
     READ_CMD: process.env.READ_CMD || "false",
     AUTO_VOICE: process.env.AUTO_VOICE || "false",
-    TIMEZONE:precess.env.TIMEZONE || "Asia/Colombo",
+    TIMEZONE:process.env.TIMEZONE || "Asia/Colombo",
 };
