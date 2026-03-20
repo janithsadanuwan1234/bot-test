@@ -22,7 +22,8 @@ if (time2 < "05:00:00") {
     return `*👋🏻 {BOT_NAME} ONLINE NOW*
 
 *╭────♡◉◉◉♡────⌬*
-💖 *Hey, {pushname} ${pushwish} I’m {BOT_NAME}🙃, Alive Now for you*
+💖 Hey, *{pushname}* ${pushwish} I’m {BOT_NAME} 🙃,
+ Alive Now for you
 *╰────♡◉◉◉♡────⌬*
 
 
@@ -33,8 +34,7 @@ if (time2 < "05:00:00") {
 
 *───────────────*
 *🌐 ᴄᴏɴᴛᴀᴄᴛ ᴊᴀɴɪʏᴀ*
-> http://wa.me/+94788175828?text=*Hey__JANIYA*
-`;
+> http://wa.me/+94788175828?text=*Hey__JANIYA*`;
 }
 
 module.exports = { getAliveMessage };
