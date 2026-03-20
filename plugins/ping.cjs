@@ -4,7 +4,7 @@ const { runtime } = require('../lib/functions.cjs');
 const config = require("../config.cjs");
 const axios = require('axios'); 
 
-const STATUS_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const STATUS_IMAGE_URL = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
 let cachedStatusImage = null;

@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const CHANNEL_JID = "120363408887211906@newsletter";
 const cooldowns = new Map();
-const PAIR_IMAGE = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const PAIR_IMAGE = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 
 cmd({
     pattern: "pair",

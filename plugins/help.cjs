@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const lastHelpMessage = new Map();
 
-const HELP_IMG_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const HELP_IMG_URL = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
 let cachedHelpImage = null;

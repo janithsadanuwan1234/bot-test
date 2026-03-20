@@ -3,7 +3,7 @@ const { updateSetting } = require("./bot_db.cjs");
 const config = require("../config.cjs");
 
 // Default Image Link
-const DEFAULT_IMG = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const DEFAULT_IMG = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 
 const lastSettingsMessage = new Map();
 const lastSecurityMessage = new Map(); // Security sub-menu එක track කිරීමට

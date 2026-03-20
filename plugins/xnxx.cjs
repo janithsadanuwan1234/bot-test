@@ -4,7 +4,7 @@ const axios = require("axios");
 const API_KEY = "darknero";
 const SEARCH_API = "https://apis.sandarux.sbs/api/download/xnxx-search";
 const DL_API = "https://apis.sandarux.sbs/api/download/xnxx-dl";
-const LOGO_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const LOGO_URL = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 
 cmd({
     pattern: "xnxx",

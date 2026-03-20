@@ -3,7 +3,7 @@ const os = require('os');
 const config = require("../config.cjs");
 const axios = require('axios'); 
 
-const MENU_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
+const MENU_IMAGE_URL = "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
 const CHANNEL_JID = "120363408887211906@newsletter"; 
 const lastMenuMessage = new Map();
 
