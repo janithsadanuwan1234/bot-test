@@ -31,7 +31,7 @@ cmd({
                         `───────────────────\n\n` +
                         `${lyrics.lyrics}\n\n` +
                         `───────────────────\n` +
-                        `> *© ZANTA-MD LYRICS SERVICE*`;
+                        `> *© QUEEN-NILU-MD LYRICS SERVICE*`;
 
         // Image එකක් තිබුණොත් ඒක එක්ක යවනවා, නැත්නම් Text එක විතරක් යවනවා.
         if (lyrics.image) {

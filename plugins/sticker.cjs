@@ -76,7 +76,7 @@ cmd({
 
         ffmpeg(inPath)
             .on('end', async () => {
-                await zanta.sendMessage(from, { sticker: fs.readFileSync(outPath), packname: "ZANTA-MD", author: "Sticker-Bot" }, { quoted: mek });
+                await zanta.sendMessage(from, { sticker: fs.readFileSync(outPath), packname: "QUEEN-NILU-MD", author: "Sticker-Bot" }, { quoted: mek });
                 fs.unlinkSync(inPath); fs.unlinkSync(outPath);
             })
             .on('error', (e) => { reply("Error!"); fs.unlinkSync(inPath); })
@@ -105,7 +105,7 @@ cmd({
 
         ffmpeg(inPath)
             .on('end', async () => {
-                await zanta.sendMessage(from, { image: fs.readFileSync(outPath), caption: "> *ZANTA-MD Convert*" }, { quoted: mek });
+                await zanta.sendMessage(from, { image: fs.readFileSync(outPath), caption: "> *QUEEN-NILU-MD Convert*" }, { quoted: mek });
                 fs.unlinkSync(inPath); fs.unlinkSync(outPath);
             })
             .save(outPath);

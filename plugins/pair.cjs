@@ -3,13 +3,13 @@ const axios = require("axios");
 
 const CHANNEL_JID = "120363406265537739@newsletter";
 const cooldowns = new Map();
-const PAIR_IMAGE = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const PAIR_IMAGE = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
 cmd({
     pattern: "pair",
     alias: ["code", "login"],
     react: "🔑",
-    desc: "Get ZANTA-MD pair code (Auto-copy format).",
+    desc: "Get QUEEN-NILU-MD pair code (Auto-copy format).",
     category: "main",
     filename: __filename
 }, async (bot, mek, m, { from, q, reply, userSettings }) => {

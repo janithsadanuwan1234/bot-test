@@ -22,10 +22,10 @@ cmd({
 
         const tempEmail = data.result.email; // ඊමේල් එක මෙතන තියෙන්නේ
 
-        let mailMsg = `📧 *ZANTA-MD TEMP MAIL* 📧\n\n` +
+        let mailMsg = `📧 *QUEEN-NILU-MD TEMP MAIL* 📧\n\n` +
                       `📍 *Email:* \`${tempEmail}\` \n\n` + // Copy කරගන්න ලේසි වෙන්න code format එකට දැම්මා
                       `> *Note:* Use this email for temporary registrations.\n\n` +
-                      `*© ZANTA-MD TOOLS SERVICE*`;
+                      `*© QUEEN-NILU-MD TOOLS SERVICE*`;
 
         await bot.sendMessage(from, {
             text: mailMsg,

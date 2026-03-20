@@ -22,11 +22,11 @@ cmd({
         // පළමු පුවත පමණක් ලබා ගැනීම
         const latestNews = data.results[0];
 
-        let newsCaption = `📰 *ZANTA-MD LATEST NEWS* 📰\n\n` +
+        let newsCaption = `📰 *QUEEN-NILU-MD LATEST NEWS* 📰\n\n` +
                           `📌 *${latestNews.title}*\n\n` +
                           `📝 ${latestNews.description}\n\n` +
                           `🔗 *Read More:* ${latestNews.url}\n\n` +
-                          `> *© ZANTA-MD NEWS SERVICE*`;
+                          `> *© QUEEN-NILU-MD NEWS SERVICE*`;
 
         // පුවතේ රූපය සහ විස්තරය යැවීම
         await bot.sendMessage(from, {

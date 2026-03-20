@@ -3,7 +3,7 @@ const os = require('os');
 const config = require("../config.cjs");
 const axios = require('axios'); 
 
-const MENU_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const MENU_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 const CHANNEL_JID = "120363406265537739@newsletter"; 
 const lastMenuMessage = new Map();
 
@@ -34,7 +34,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const finalPrefix = settings.prefix || config.DEFAULT_PREFIX || '.'; 
-        const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD"; 
+        const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD"; 
         const ownerName = settings.ownerName || config.DEFAULT_OWNER_NAME || 'Akash Kavindu';
         const mode = (settings.workType || "Public").toUpperCase();
         const isButtonsOn = settings.buttons === 'true';
@@ -115,7 +115,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
             return await zanta.sendMessage(from, {
                 image: imageToDisplay,
                 caption: headerText + "ꜱᴇʟᴇᴄᴛ 👇",
-                footer: `© ZANTA-MD •`,
+                footer: `© QUEEN-NILU-MD •`,
                 buttons: [
                     { buttonId: "cat_main", buttonText: { displayText: "🏠 MAIN" }, type: 1 },
                     { buttonId: "cat_download", buttonText: { displayText: "📥 DOWNLOAD" }, type: 1 },

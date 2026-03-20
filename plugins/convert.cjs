@@ -62,7 +62,7 @@ cmd({
             "𝑩𝒐𝒍𝒅 𝑰𝒕𝒂𝒍𝒊𝒄": "𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"
         };
 
-        let result = `✨ *ZANTA-MD FONTS* ✨\n\n`;
+        let result = `✨ *QUEEN-NILU-MD FONTS* ✨\n\n`;
         for (let styleName in styles) {
             let styledText = "";
             let styleAlphabet = styles[styleName];
@@ -75,7 +75,7 @@ cmd({
             }
             result += `📍 *${styleName}*\n${styledText}\n\n`;
         }
-        await zanta.sendMessage(from, { text: result + `> *© ZANTA-MD*`, contextInfo: contextInfo }, { quoted: mek });
+        await zanta.sendMessage(from, { text: result + `> *© QUEEN-NILU-MD*`, contextInfo: contextInfo }, { quoted: mek });
     } catch (err) { reply("❌ Error!"); }
 });
 
@@ -92,7 +92,7 @@ cmd({
         figlet(q, function(err, data) {
             if (err) return reply("❌ Error!");
             zanta.sendMessage(from, { 
-                text: "```" + data + "```\n\n> *© ZANTA-MD*", 
+                text: "```" + data + "```\n\n> *© QUEEN-NILU-MD*", 
                 contextInfo: contextInfo 
             }, { quoted: mek });
         });

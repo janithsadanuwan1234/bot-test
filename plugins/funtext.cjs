@@ -40,7 +40,7 @@ cmd({
     category: "tools",
     filename: __filename
 }, async (zanta, mek, m, { from, q }) => {
-    const text = q.trim() || "ZANTA-MD ON FIRE!";
+    const text = q.trim() || "QUEEN-NILU-MD ON FIRE!";
     const steps = [
         `Initiating... 🧨`,
         `[WARNING] System Overload...`,

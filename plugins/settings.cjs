@@ -3,7 +3,7 @@ const { updateSetting } = require("./bot_db.cjs");
 const config = require("../config.cjs");
 
 // Default Image Link
-const DEFAULT_IMG = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const DEFAULT_IMG = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
 const lastSettingsMessage = new Map();
 const lastSecurityMessage = new Map(); // Security sub-menu එක track කිරීමට
@@ -35,7 +35,7 @@ cmd({
 
     // --- 📊 Settings Configuration ---
     const settings = userSettings || global.BOT_SESSIONS_CONFIG[senderNumber] || {};
-    const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD";
+    const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
     const ownerName = settings.ownerName || config.DEFAULT_OWNER_NAME || "Owner";
     const botPrefix = settings.prefix || prefix || ".";
     const webPass = settings.password === 'not_set' ? "Not Set ❌" : "Set ✅";

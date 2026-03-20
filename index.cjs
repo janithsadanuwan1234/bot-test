@@ -446,7 +446,7 @@ async function connectToWA(sessionData) {
                 const deletedText = isImage ? oldMsg.message.imageMessage?.caption || "Image without caption" : oldMsg.message.conversation || oldMsg.message[mType]?.text || "Media Message";
                 const senderNum = decodeJid(oldMsg.key.participant || oldMsg.key.remoteJid).split("@")[0];
 
-                const header = `🛡️ *ZANTA-MD ANTI-DELETE* 🛡️`;
+                const header = `🛡️ *QUEEN-NILU-MD ANTI-DELETE* 🛡️`;
                 const footerContext = {
                     forwardingScore: 999, isForwarded: true,
                     forwardedNewsletterMessageInfo: { newsletterJid: "120363406265537739@newsletter", newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳 </>", serverMessageId: 100 }
@@ -707,7 +707,7 @@ async function connectToWA(sessionData) {
             let dbKey = dbKeys[index];
 
             if (index === 20) {
-                const secMsg = `🛡️ *ZANTA-MD GROUP SECURITY* 🛡️\n\n1️⃣ Anti-BadWords: ${userSettings.badWords === "true" ? "✅ ON" : "❌ OFF"}\n2️⃣ Anti-Link: ${userSettings.antiLink === "true" ? "✅ ON" : "❌ OFF"}\n3️⃣ Anti-Command: ${userSettings.antiCmd === "true" ? "✅ ON" : "❌ OFF"}\n\n*💡 How to change:*\nReply with *Number + on/off*\nEx: *1 on*\n\n> *ᴘᴏဝᴇʀᴇᴅ ʙʏ ᴢᴀɴΤΑ-ᴍᴅ*`;
+                const secMsg = `🛡️ *QUEEN-NILU-MD GROUP SECURITY* 🛡️\n\n1️⃣ Anti-BadWords: ${userSettings.badWords === "true" ? "✅ ON" : "❌ OFF"}\n2️⃣ Anti-Link: ${userSettings.antiLink === "true" ? "✅ ON" : "❌ OFF"}\n3️⃣ Anti-Command: ${userSettings.antiCmd === "true" ? "✅ ON" : "❌ OFF"}\n\n*💡 How to change:*\nReply with *Number + on/off*\nEx: *1 on*\n\n> *ᴘᴏဝᴇʀᴇᴅ ʙʏ ᴢᴀɴΤΑ-ᴍᴅ*`;
                 const sentSec = await reply(secMsg);
                 lastSecurityMessage.set(from, sentSec.key.id);
                 return;
@@ -730,7 +730,7 @@ async function connectToWA(sessionData) {
                     return;
                 }
                 if (index === 14 && input.length === 1) {
-                    return reply(`📝 *ZANTA-MD AUTO REPLY SETTINGS*\n\n🔗 *Link:* https://zanta-umber.vercel.app/zanta-login\n\n*Status:* ${userSettings.autoReply === "true" ? "✅ ON" : "❌ OFF"}`);
+                    return reply(`📝 *QUEEN-NILU-MD AUTO REPLY SETTINGS*\n\n🔗 *Link:* https://zanta-umber.vercel.app/zanta-login\n\n*Status:* ${userSettings.autoReply === "true" ? "✅ ON" : "❌ OFF"}`);
                 }
 
                 if (index >= 7 && !input[1]) return reply(`⚠️ කරුණාකර අගය ලෙස 'on' හෝ 'off' ලබා දෙන්න.`);
@@ -781,7 +781,7 @@ async function connectToWA(sessionData) {
 }
 
 startSystem();
-app.get("/", (req, res) => res.send("ZANTA-MD Online ✅"));
+app.get("/", (req, res) => res.send("QUEEN-NILU-MD Online ✅"));
 app.listen(port);
 
 setTimeout(async () => {

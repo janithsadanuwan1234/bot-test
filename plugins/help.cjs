@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const lastHelpMessage = new Map();
 
-const HELP_IMG_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const HELP_IMG_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
 let cachedHelpImage = null;
@@ -32,7 +32,7 @@ cmd({
 }, async (zanta, mek, m, { from, reply, args, pushname, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
-        const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD";
+        const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
 
         // --- 📂 1. අංකයක් Reply කළ විට ක්‍රියාත්මක වන කොටස ---
         const selection = args[0]; 
@@ -41,7 +41,7 @@ cmd({
             let devMsg = `*👨‍💻 Bot Developer Details*
 
 👤 *නම:* Akash Kavindu
-🛠️ *ව්‍යාපෘතිය:* ZANTA-MD (WhatsApp Bot)
+🛠️ *ව්‍යාපෘතිය:* QUEEN-NILU-MD (WhatsApp Bot)
 🌍 *රට:* ශ්‍රී ලංකා
 🔗 *GitHub:* 🤐
 🔗 *WhatsApp:* http://wa.me/+94743404814?text=*Hey__ZANTA
@@ -51,7 +51,7 @@ cmd({
         }
 
         if (selection === "2") {
-            let featMsg = `*🚀 ZANTA-MD All Features*
+            let featMsg = `*🚀 QUEEN-NILU-MD All Features*
 
 🖼️ *Media:* Getdp, Save status, Unlock view once image...
 🎶 *Download:* Song, YTmp4, FB, Tiktok, Apk

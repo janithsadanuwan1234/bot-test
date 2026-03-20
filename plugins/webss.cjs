@@ -30,7 +30,7 @@ cmd({
         // Screenshot එක යැවීම
         await bot.sendMessage(from, {
             image: ssBuffer,
-            caption: `📸 *WEBSITE SCREENSHOT*\n\n🌐 *URL:* ${url}\n\n> *© ZANTA-MD TOOLS SERVICE*`
+            caption: `📸 *WEBSITE SCREENSHOT*\n\n🌐 *URL:* ${url}\n\n> *© QUEEN-NILU-MD TOOLS SERVICE*`
         }, { quoted: mek });
 
         await bot.sendMessage(from, { react: { text: "✅", key: m.key } });

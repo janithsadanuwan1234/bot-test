@@ -4,7 +4,7 @@ const { runtime } = require('../lib/functions.cjs');
 const config = require("../config.cjs");
 const axios = require('axios'); 
 
-const STATUS_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const STATUS_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
 let cachedStatusImage = null;
@@ -41,7 +41,7 @@ async (zanta, mek, m, { from, userSettings }) => {
     try {
         const startTime = Date.now();
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
-        const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD";
+        const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
 
         // Loading message
         const loadingMsg = await zanta.sendMessage(from, { text: "⚙️ *Checking System Status...*" }, { quoted: mek });

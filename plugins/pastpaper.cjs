@@ -20,13 +20,13 @@ cmd({
         }
 
         const results = data.results.slice(0, 10);
-        let msg = `📚 *ZANTA-MD PAPER HUB* 📚\n\n🔍 Query: *${q}*\n\n`;
+        let msg = `📚 *QUEEN-NILU-MD PAPER HUB* 📚\n\n🔍 Query: *${q}*\n\n`;
         
         results.forEach((res, index) => {
             msg += `${index + 1}️⃣ *${res.title}*\n`;
         });
         
-        msg += `\n> *පේපර් එක ලබා ගැනීමට අදාළ අංකය Reply කරන්න.* \n\n*© ZANTA-MD*`;
+        msg += `\n> *පේපර් එක ලබා ගැනීමට අදාළ අංකය Reply කරන්න.* \n\n*© QUEEN-NILU-MD*`;
 
         const sentMsg = await bot.sendMessage(from, {
             image: { url: results[0].image || "https://paperhub.lk/wp-content/uploads/2022/04/paperhub_logo.png" },
@@ -64,7 +64,7 @@ cmd({
                             document: { url: selected.download },
                             mimetype: 'application/pdf',
                             fileName: `${selected.title.replace(/[/\\?%*:|"<>]/g, '-')}.pdf`,
-                            caption: `📄 *${selected.title}*\n\n> *© ZANTA-MD PAPER SERVICE*`
+                            caption: `📄 *${selected.title}*\n\n> *© QUEEN-NILU-MD PAPER SERVICE*`
                         }, { quoted: msgUpdate });
 
                         await bot.sendMessage(from, { react: { text: '✅', key: msgUpdate.key } });

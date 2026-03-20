@@ -11,7 +11,7 @@ cmd({
     filename: __filename,
 }, async (bot, mek, m, { from, q, reply, prefix, senderNumber, sender }) => {
     try {
-        if (!q) return reply("📸 *ZANTA-MD INSTAGRAM DL*\n\nExample: .insta https://www.instagram.com/reels/xxxx/");
+        if (!q) return reply("📸 *QUEEN-NILU-MD INSTAGRAM DL*\n\nExample: .insta https://www.instagram.com/reels/xxxx/");
         if (!q.includes("instagram.com")) return reply("❌ Please provide a valid Instagram link.");
 
         await bot.sendMessage(from, { react: { text: "🔍", key: mek.key } });
@@ -23,12 +23,12 @@ cmd({
             const result = response.data;
             
             // API එකේ තියෙන thumbnail එක මුලින්ම පෙන්වමු
-            let msg = `✨ *ZANTA-MD INSTA DL* ✨\n\n` +
+            let msg = `✨ *QUEEN-NILU-MD INSTA DL* ✨\n\n` +
                       `📝 *Type:* Instagram Media\n` +
                       `🔗 *Link:* ${q.split('?')[0]}\n\n` +
                       `*Reply with a number:* \n\n` +
                       `1️⃣ *Download Media* (Video/Image)\n\n` +
-                      `> *© Powered by ZANTA-MD*`;
+                      `> *© Powered by QUEEN-NILU-MD*`;
 
             const sentMsg = await bot.sendMessage(from, { 
                 image: { url: result.thumbnail }, 
@@ -75,14 +75,14 @@ cmd({
                         if (isVideo) {
                             await bot.sendMessage(from, { 
                                 video: buffer, 
-                                caption: `✅ *Downloaded by ZANTA-MD*`,
+                                caption: `✅ *Downloaded by QUEEN-NILU-MD*`,
                                 mimetype: 'video/mp4',
                                 fileName: 'insta_video.mp4'
                             }, { quoted: msgUpdate });
                         } else {
                             await bot.sendMessage(from, { 
                                 image: buffer, 
-                                caption: `✅ *Downloaded by ZANTA-MD*`,
+                                caption: `✅ *Downloaded by QUEEN-NILU-MD*`,
                                 mimetype: 'image/jpeg'
                             }, { quoted: msgUpdate });
                         }

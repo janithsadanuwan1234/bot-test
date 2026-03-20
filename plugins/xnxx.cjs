@@ -4,7 +4,7 @@ const axios = require("axios");
 const API_KEY = "darknero";
 const SEARCH_API = "https://apis.sandarux.sbs/api/download/xnxx-search";
 const DL_API = "https://apis.sandarux.sbs/api/download/xnxx-dl";
-const LOGO_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+const LOGO_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
 cmd({
     pattern: "xnxx",
@@ -28,7 +28,7 @@ cmd({
         results.forEach((res, index) => {
             msg += `${index + 1}️⃣ *${res.title}*\n`;
         });
-        msg += `\n> *Reply with the number to download.* \n\n*© ZANTA-MD*`;
+        msg += `\n> *Reply with the number to download.* \n\n*© QUEEN-NILU-MD*`;
 
         const sentMsg = await bot.sendMessage(from, { 
             image: { url: LOGO_URL }, 
@@ -74,8 +74,8 @@ cmd({
                         await bot.sendMessage(from, { 
                             document: { url: finalUrl }, 
                             mimetype: 'video/mp4', 
-                            fileName: `[ZANTA-MD] ${videoTitle}.mp4`,
-                            caption: `🎬 *${videoTitle}*\n⚖️ *Size:* ${sizeInMB.toFixed(2)} MB\n\n> *© ZANTA-MD XNXX SERVICE*`
+                            fileName: `[QUEEN-NILU-MD] ${videoTitle}.mp4`,
+                            caption: `🎬 *${videoTitle}*\n⚖️ *Size:* ${sizeInMB.toFixed(2)} MB\n\n> *© QUEEN-NILU-MD XNXX SERVICE*`
                         }, { quoted: msgUpdate });
 
                         await bot.sendMessage(from, { react: { text: '✅', key: msgUpdate.key } });

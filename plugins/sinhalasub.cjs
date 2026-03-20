@@ -24,7 +24,7 @@ cmd({
         const results = searchRes.data.results.slice(0, 10);
         let msg = `🎬 *ZANTA MOVIE SEARCH* 🎬\n\n`;
         results.forEach((res, index) => { msg += `${index + 1}️⃣ *${res.title.split('|')[0].trim()}*\n`; });
-        msg += `\n*Reply with the number to see quality list.* \n\n> *© ZANTA-MD MOVIE SERVICE*`;
+        msg += `\n*Reply with the number to see quality list.* \n\n> *© QUEEN-NILU-MD MOVIE SERVICE*`;
 
         const sentMsg = await bot.sendMessage(from, { 
             image: { url: results[0].image || "https://i.ibb.co/vz609p0/movie.jpg" }, 
@@ -70,7 +70,7 @@ cmd({
                                         let finalUrl = dlRes.data.url;
                                         if (finalUrl.includes('pixeldrain.com/u/')) finalUrl = finalUrl.replace('/u/', '/api/file/') + "?download";
 
-                                        const waitMsg = await reply("📥 *ZANTA-MD is processing...* \n*Mode: Direct Pipe Streaming*");
+                                        const waitMsg = await reply("📥 *QUEEN-NILU-MD is processing...* \n*Mode: Direct Pipe Streaming*");
 
                                         // --- [LOW RAM STREAMING LOGIC] ---
                                         // මුළු file එකම RAM එකට ගන්නේ නැතිව Stream එකක් ලෙස ලබා ගැනීම
@@ -83,8 +83,8 @@ cmd({
                                         await bot.sendMessage(from, { 
                                             document: { url: finalUrl }, // Baileys වලට URL එක කෙලින්ම දීම RAM එකට වඩාත් ආරක්ෂිතයි
                                             mimetype: 'video/mp4', 
-                                            fileName: `[ZANTA-MD] ${selectedMovie.title.split('|')[0].trim()}.mp4`,
-                                            caption: `🎬 *${selectedMovie.title.split('|')[0].trim()}*\n📊 *Quality:* ${selectedDl.quality}\n⚖️ *Size:* ${selectedDl.size}\n\n> *© ZANTA-MD*`
+                                            fileName: `[QUEEN-NILU-MD] ${selectedMovie.title.split('|')[0].trim()}.mp4`,
+                                            caption: `🎬 *${selectedMovie.title.split('|')[0].trim()}*\n📊 *Quality:* ${selectedDl.quality}\n⚖️ *Size:* ${selectedDl.size}\n\n> *© QUEEN-NILU-MD*`
                                         }, { 
                                             quoted: qMsg,
                                             mediaUploadTimeoutMs: 1000 * 60 * 60,

@@ -10,7 +10,7 @@ cmd({
     filename: __filename
 }, async (bot, mek, m, { from, q, reply }) => {
     try {
-        if (!q) return reply("🤖 *Hello! I am ZANTA-MD AI. How can I help you today?*\n\nExample: .ai Write a short poem about Sri Lanka.");
+        if (!q) return reply("🤖 *Hello! I am QUEEN-NILU-MD AI. How can I help you today?*\n\nExample: .ai Write a short poem about Sri Lanka.");
 
         await bot.sendMessage(from, { react: { text: "🧠", key: m.key } });
 

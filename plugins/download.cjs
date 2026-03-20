@@ -34,12 +34,12 @@ cmd(
         return reply(`🚫 *File is too large (${appSize} MB).* Max limit is 600MB.`);
       }
 
-      const caption = `📦 *ZANTA-MD APK DOWNLOADER* 📦\n\n` +
+      const caption = `📦 *QUEEN-NILU-MD APK DOWNLOADER* 📦\n\n` +
                       `📝 *Name:* ${app.name}\n` +
                       `🆔 *Package:* ${app.package}\n` +
                       `⚖️ *Size:* ${appSize} MB\n` +
                       `👤 *Developer:* ${app.developer.name}\n\n` +
-                      `> *© ZANTA-MD APK SERVICE*`;
+                      `> *© QUEEN-NILU-MD APK SERVICE*`;
 
       // 1. ඇප් එකේ විස්තර සහ ෆොටෝ එක යැවීම
       await test.sendMessage(
@@ -100,7 +100,7 @@ cmd({
         if (!videoData) return await zanta.sendMessage(from, { text: "❌ *වීඩියෝව සොයාගත නොහැකි විය.*", edit: loading.key });
 
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
-        const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD";
+        const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
 
         await zanta.sendMessage(from, {
             video: { url: videoData.play },

@@ -27,7 +27,7 @@ cmd({
         results.forEach((res, index) => { 
             msg += `${index + 1}️⃣ *${res.title.split('|')[0].trim()}*\n`; 
         });
-        msg += `\n*Reply with the number to get download links.* \n\n> *© ZANTA-MD MOVIE SERVICE*`;
+        msg += `\n*Reply with the number to get download links.* \n\n> *© QUEEN-NILU-MD MOVIE SERVICE*`;
 
         const sentMsg = await bot.sendMessage(from, { 
             image: { url: results[0].thumbnail || "https://i.ibb.co/vz609p0/movie.jpg" }, 
@@ -89,14 +89,14 @@ cmd({
                                         }
 
                                         const directUrl = finalRes.data.directLink;
-                                        const waitMsg = await reply("📥 *ZANTA-MD is uploading your movie...* \n\n*Mode:* High-Speed Direct Stream ⚡");
+                                        const waitMsg = await reply("📥 *QUEEN-NILU-MD is uploading your movie...* \n\n*Mode:* High-Speed Direct Stream ⚡");
 
                                         // Send Movie as Document (Best for high quality)
                                         await bot.sendMessage(from, { 
                                             document: { url: directUrl },
                                             mimetype: 'video/mp4', 
-                                            fileName: `[ZANTA-MD] ${selectedMovie.title.split('|')[0].trim()}.mp4`,
-                                            caption: `🎬 *${selectedMovie.title.split('|')[0].trim()}*\n\n> *© ZANTA-MD THENKIRI DOWNLOADER*`
+                                            fileName: `[QUEEN-NILU-MD] ${selectedMovie.title.split('|')[0].trim()}.mp4`,
+                                            caption: `🎬 *${selectedMovie.title.split('|')[0].trim()}*\n\n> *© QUEEN-NILU-MD THENKIRI DOWNLOADER*`
                                         }, { 
                                             quoted: dMsg,
                                             mediaUploadTimeoutMs: 1000 * 60 * 60 // 1 hour timeout
