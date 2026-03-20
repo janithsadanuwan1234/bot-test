@@ -87,7 +87,7 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: CHANNEL_JID,
                         serverMessageId: 100,
-                        newsletterName: "����� ��� ��"
+                        newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>"
                     }
                 }
             }, { quoted: mek });
@@ -103,7 +103,7 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: CHANNEL_JID,
                         serverMessageId: 100,
-                        newsletterName: "����� ��� ��"
+                        newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>"
                     }
                 }
             }, { quoted: mek });
