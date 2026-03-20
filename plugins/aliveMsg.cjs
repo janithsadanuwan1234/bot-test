@@ -8,7 +8,7 @@ const moment = require("moment-timezone")
                 const date = moment.tz(config.TIMEZONE).format('DD/MM/YYYY')
 
                 const totalMemoryBytes = os.totalmem();
-const freeMemoryBytes = os.freemem();
+const freeMemoryBytes = os.freemem(); 
 
     const day = Math.floor(uptime / (24 * 3600)); // Calculate days
 const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
