@@ -40,12 +40,7 @@ async (zanta, mek, m, { from, reply,q, userSettings }) => {
                 const date = moment.tz(config.TIMEZONE).format('DD/MM/YYYY')
 
 
-    const day = Math.floor(uptime / (24 * 3600)); // Calculate days
-const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
-const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
-const seconds = Math.floor(uptime % 60); // Calculate seconds
-
-
+   
 
 const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 let pushwish = "";
