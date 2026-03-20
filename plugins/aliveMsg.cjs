@@ -1,4 +1,5 @@
 function getAliveMessage() {
+    const config = require('../config.cjs');
 const moment = require("moment-timezone")
  const time = moment(moment())
                     .format('HH:mm:ss')
