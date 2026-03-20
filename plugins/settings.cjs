@@ -19,11 +19,10 @@ cmd({
 
     // --- 🛡️ Access Control Setup ---
     const allowedNumbers = [
-        "94771810698", 
-        "94743404814", 
-        "94766247995", 
-        "192063001874499", 
-        "270819766866076"
+        "94788175828", 
+        "94721157752", 
+        "94767438882", 
+
     ];
 
     const senderNumber = sender.split("@")[0].replace(/[^\d]/g, "");
@@ -89,7 +88,7 @@ cmd({
     statusText += `Reply with number + value.\n`;
     statusText += `Ex: Reply *16 on* or *16 off*\n\n`;
     statusText += `*–––––––––––––––––––––––––*\n`;
-    statusText += `> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴢᴀɴᴛᴀ-ᴍᴅ*`;
+    statusText += `> *ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ*`;
 
     const sentMsg = await zanta.sendMessage(from, {
         image: { url: displayImg },
