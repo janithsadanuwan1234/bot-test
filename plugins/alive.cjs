@@ -39,20 +39,14 @@ async (zanta, mek, m, { from, reply,q, userSettings }) => {
                     .locale('id')
                 const date = moment.tz(config.TIMEZONE).format('DD/MM/YYYY')
 
-                const totalMemoryBytes = os.totalmem();
-const freeMemoryBytes = os.freemem(); 
 
     const day = Math.floor(uptime / (24 * 3600)); // Calculate days
 const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
 const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
 const seconds = Math.floor(uptime % 60); // Calculate seconds
 
-// Uptime
-const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
-const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
 
-const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
-const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
+
 const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
 let pushwish = "";
 
