@@ -5,7 +5,7 @@ function getAliveMessage() {
     return `*{BOT_NAME} 𝐈𝐒 𝐎𝐍𝐋𝐈𝐍𝐄 💞*
 
 *╭────♡◉◉◉♡────⌬*
-💖 *Hey...I’m {BOT_NAME}🙃, your lovely assistant — alive and sparkling now!*
+💖 *Hey...I’m {BOT_NAME}🙃, your lovely assistant — alive and sparkling now!!!!*
 *╰────♡◉◉◉♡────⌬*
 
 *📅 ᴅᴀᴛᴇ: ${date}*
