@@ -20,7 +20,7 @@ cmd(
                 settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
 
             let targetJid;
-            let contextMsg = "";
+            let contextMsg = ""; 
 
             // 1. මැසේජ් එකක් Quoted කරලා තිබේ නම්
             if (m.quoted) {
@@ -140,8 +140,8 @@ cmd(
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: "120363406265537739@newsletter", // 👈 මෙතනට ඔයාගේ නිවැරදි Channel JID එක දාන්න
-                        newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳 </>", // 👈 මෙතනට චැනල් එකේ නම දාන්න
+                        newsletterJid: "120363408887211906@newsletter", // 👈 මෙතනට ඔයාගේ නිවැරදි Channel JID එක දාන්න
+                        newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>", // 👈 මෙතනට චැනල් එකේ නම දාන්න
                         serverMessageId: 100,
                     },
                 },

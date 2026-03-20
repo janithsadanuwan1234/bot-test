@@ -3,7 +3,7 @@ const config = require('../config.cjs');
 const aliveMsg = require('./aliveMsg.cjs');
 const axios = require('axios'); 
 
-const CHANNEL_JID = "120363406265537739@newsletter"; 
+const CHANNEL_JID = "120363408887211906@newsletter"; 
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
 let cachedAliveImage = null;
@@ -87,7 +87,7 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: CHANNEL_JID,
                         serverMessageId: 100,
-                        newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳"
+                        newsletterName: "����� ��� ��"
                     }
                 }
             }, { quoted: mek });
@@ -103,7 +103,7 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: CHANNEL_JID,
                         serverMessageId: 100,
-                        newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳"
+                        newsletterName: "����� ��� ��"
                     }
                 }
             }, { quoted: mek });

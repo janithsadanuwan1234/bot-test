@@ -42,7 +42,7 @@ cmd({
             forwardedNewsletterMessageInfo: {
                 newsletterJid: CHANNEL_JID,
                 serverMessageId: 100,
-                newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳 </>"
+                newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>"
             }
         };
 

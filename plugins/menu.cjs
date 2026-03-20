@@ -4,7 +4,7 @@ const config = require("../config.cjs");
 const axios = require('axios'); 
 
 const MENU_IMAGE_URL = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
-const CHANNEL_JID = "120363406265537739@newsletter"; 
+const CHANNEL_JID = "120363408887211906@newsletter"; 
 const lastMenuMessage = new Map();
 
 // --- 🖼️ IMAGE PRE-LOAD LOGIC ---
@@ -81,7 +81,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
             forwardedNewsletterMessageInfo: {
                 newsletterJid: CHANNEL_JID,
                 serverMessageId: 100,
-                newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳 </>"
+                newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>"
             }
         };
 

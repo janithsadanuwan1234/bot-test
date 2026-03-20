@@ -1,7 +1,7 @@
 const { cmd } = require("../command.cjs");
 const axios = require("axios");
 
-const CHANNEL_JID = "120363406265537739@newsletter";
+const CHANNEL_JID = "120363408887211906@newsletter";
 const cooldowns = new Map();
 const PAIR_IMAGE = "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/QUEEN-NILU-MD.png";
 
@@ -47,7 +47,7 @@ cmd({
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: CHANNEL_JID,
                     serverMessageId: 100,
-                    newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳 </>"
+                    newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>"
                 }
             };
 

@@ -32,9 +32,9 @@ cmd({
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363406265537739@newsletter',
+                    newsletterJid: '120363408887211906@newsletter',
                     serverMessageId: 100,
-                    newsletterName: "𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑶𝑭𝑭𝑰𝑪𝑰𝑨𝑳"
+                    newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫"
                 }
             }
         }, { quoted: mek });
