@@ -106,9 +106,9 @@ if (time2 < "05:00:00") {
                 caption: finalMsg,
                 footer: `© ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ`,
                 buttons: [
-                    { buttonId: prefix + "ping", buttonText: { displayText: "⚡ PING" }, type: 1 },
                     { buttonId: prefix + "menu", buttonText: { displayText: "📜 MENU" }, type: 1 },
-                    { buttonId: prefix + "settings", buttonText: { displayText: "⚙️ SETTINGS" }, type: 1 },
+                    { buttonId: prefix + "ping", buttonText: { displayText: "⚡ PING" }, type: 1 },
+                    //{ buttonId: prefix + "settings", buttonText: { displayText: "⚙️ SETTINGS" }, type: 1 },
                     { buttonId: prefix + "help", buttonText: { displayText: "📞 HELP" }, type: 1 }
                 ],
                 headerType: 4, 

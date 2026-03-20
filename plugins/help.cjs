@@ -40,13 +40,13 @@ cmd({
         if (selection === "1") {
             let devMsg = `*👨‍💻 Bot Developer Details*
 
-👤 *නම:* Akash Kavindu
+👤 *නම:* Janith Sadanuwan
 🛠️ *ව්‍යාපෘතිය:* QUEEN-NILU-MD (WhatsApp Bot)
 🌍 *රට:* ශ්‍රී ලංකා
 🔗 *GitHub:* 🤐
 🔗 *WhatsApp:* http://wa.me/+94788175828?text=*Hey__JANIYA
 
-> *Created with ❤️ by Akash*`;
+> *© ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ*`;
             return reply(devMsg);
         }
 
