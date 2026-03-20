@@ -36,11 +36,12 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
         const prefix = settings.prefix || config.DEFAULT_PREFIX || ".";
         const isButtonsOn = settings.buttons === 'true';
-
+         const user = q.trim() || m.pushName || "User";
         // Placeholder replace කිරීම
         const finalMsg = aliveMsg.getAliveMessage()
             .replace(/{BOT_NAME}/g, botName)
             .replace(/{OWNER_NUMBER}/g, config.OWNER_NUMBER)
+            .replace(/{pushname}/g,user)
             .replace(/{PREFIX}/g, prefix);
 
         try {
