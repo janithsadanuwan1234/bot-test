@@ -16,7 +16,7 @@ function getAliveMessage() {
 *💬 ᴘʀᴇꜰɪx: {PREFIX}*
 *───────────────*
 *🌐 ᴄᴏɴᴛᴀᴄᴛ ᴢᴀɴᴛᴀ*
-> http://wa.me/+94743404814?text=*Hey__ZANTA*
+> http://wa.me/+94788175828?text=*Hey__JANIYA*
 
 > *© POWERED BY JANIYA_OFC*`;
 }

@@ -716,7 +716,7 @@ async function connectToWA(sessionData) {
             if (dbKey) {
                 if (index === 6) {
                     const isPaidUser = userSettings && userSettings.paymentStatus === "paid";
-                    if (!isAllowedUser && !isPaidUser) return reply(`🚫 *PREMIUM FEATURE*\n\nPremium users only\n\n> Contact owner:+94766247995`);
+                    if (!isAllowedUser && !isPaidUser) return reply(`🚫 *PREMIUM FEATURE*\n\nPremium users only\n\n> Contact owner:+94788175828`);
                     if (!input[1] || !input[1].includes("files.catbox.moe")) return reply(`⚠️ *CATBOX LINK ONLY*\n\nකරුණාකර https://catbox.moe/ වෙත upload කර ලැබෙන 'files.catbox.moe' ලින්ක් එක ලබා දෙන්න.`);
                 }
                 if (index === 18) { 

@@ -15,7 +15,7 @@ cmd({
 }, async (conn, mek, m, { q, reply, sender }) => {
 
     const senderNumber = sender.split("@")[0].replace(/[^\d]/g, '');
-    if (!allowedNumbers.includes(senderNumber)) return reply("🚫මෙම පහසුකම භාවිතා කිරීමට ඔබට අවසර නැත\n\n> Contact owner\nhttp://wa.me/+94766247995?text=*Zanta+Channel+React*");
+    if (!allowedNumbers.includes(senderNumber)) return reply("🚫මෙම පහසුකම භාවිතා කිරීමට ඔබට අවසර නැත\n\n> Contact owner\nhttp://wa.me/+94788175828?text=*hEY_JANIYA*");
 
     if (!q.includes(",")) return reply("💡 Usage: .user 9477xxxxxxx, paid\n(Status can be paid or unpaid)");
 

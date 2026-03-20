@@ -44,7 +44,7 @@ cmd({
 🛠️ *ව්‍යාපෘතිය:* QUEEN-NILU-MD (WhatsApp Bot)
 🌍 *රට:* ශ්‍රී ලංකා
 🔗 *GitHub:* 🤐
-🔗 *WhatsApp:* http://wa.me/+94743404814?text=*Hey__ZANTA
+🔗 *WhatsApp:* http://wa.me/+94788175828?text=*Hey__JANIYA
 
 > *Created with ❤️ by Akash*`;
             return reply(devMsg);
@@ -69,7 +69,7 @@ _සවිස්තරාත්මක ලැයිස්තුවට .menu ට�
 
 ඔබට කිසියම් ගැටළුවක් ඇත්නම් පහත ලින්ක් හරහා අපව සම්බන්ධ කරගන්න:
 
-🔗 *Official WhatsApp:* http://wa.me/+94743404814?text=*Hey__ZANTA
+🔗 *Official WhatsApp:* http://wa.me/+94788175828?text=*JANIYA
 
 _ස්තුතියි!_`;
             return reply(contactMsg);
