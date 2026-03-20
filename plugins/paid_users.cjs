@@ -2,7 +2,7 @@ const { cmd } = require('../command.cjs');
 const { updateSetting } = require('../plugins/bot_db.cjs');
 
 // 🛡️ අවසර ලත් අංක (Owner only)
-const allowedNumbers = ["94771810698", "94743404814", "94766247995", "192063001874499", "270819766866076"];
+const allowedNumbers = ["94788175828",];
 
 cmd({
     pattern: "pay",
