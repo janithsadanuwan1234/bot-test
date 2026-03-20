@@ -30,7 +30,7 @@ cmd({
     category: "main",
     filename: __filename
 },
-async (zanta, mek, m, { from, reply, userSettings }) => {
+async (zanta, mek, m, { from, reply,q, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
