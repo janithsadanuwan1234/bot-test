@@ -15,7 +15,7 @@ module.exports = {
     DEFAULT_PREFIX: process.env.DEFAULT_PREFIX || ".",
 
     // 🖼️ Media Settings (Alive image & Menu)
-    ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpge",
+    ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg",
     MENU_IMG: process.env.MENU_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg",
 
     // ⚙️ Dashboard / Database Defaults

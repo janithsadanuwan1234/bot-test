@@ -380,7 +380,7 @@ async function connectToWA(sessionData) {
             
             if (userSettings.connectionMsg === "true") {
                 await zanta.sendMessage(decodeJid(zanta.user.id), {
-                    image: { url: "https://telegra.ph/file/1e63f0ee90304a12767c7.jpge" },
+                    image: { url: "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg" },
                     caption: `${userSettings.botName} connected ✅`,
                 });
             }
