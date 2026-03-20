@@ -43,7 +43,8 @@ async (zanta, mek, m, { from, reply,q, userSettings }) => {
    
 
 const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
-const pushwish = "";
+
+let pushwish = "";
 
 if (time2 < "05:00:00") {
   pushwish = `Good Morning 🌄`;
