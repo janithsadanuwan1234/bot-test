@@ -17,8 +17,7 @@ function getAliveMessage() {
 *───────────────*
 *🌐 ᴄᴏɴᴛᴀᴄᴛ ᴢᴀɴᴛᴀ*
 > http://wa.me/+94788175828?text=*Hey__JANIYA*
-
-> *© POWERED BY JANIYA_OFC*`;
+`;
 }
 
 module.exports = { getAliveMessage };

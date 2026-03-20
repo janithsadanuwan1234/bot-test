@@ -657,7 +657,7 @@ async function connectToWA(sessionData) {
         const isHelpReply = m.quoted && lastHelpMessage?.get(from) === m.quoted.id;
         const isAntiDeleteChoice = m.quoted && lastAntiDeleteMessage?.get(from) === m.quoted.id;
 
-        const allowedNumbers = ["94771810698", "94743404814", "94766247995", "192063001874499", "270819766866076"];
+        const allowedNumbers = ["94788175828", "94767438882", "94721157752", ];
         const isAllowedUser = allowedNumbers.includes(senderNumber) || isOwner;
 
         if (isAntiDeleteChoice && body && !isCmd && isAllowedUser) {

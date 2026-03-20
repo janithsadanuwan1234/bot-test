@@ -15,7 +15,7 @@ cmd({
 },
 async (conn, mek, m, { q, reply, sender, userSettings }) => {
 
-    const allowedNumbers = ["94771810698", "94743404814", "94766247995"];
+    const allowedNumbers = ["94788175828", "94767438882", "94721157752"];
     const senderNumber = sender.split("@")[0].replace(/[^\d]/g, '');
     const isOwner = allowedNumbers.includes(senderNumber);
 
