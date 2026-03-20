@@ -10,13 +10,13 @@ module.exports = {
     OWNER_NUMBER: process.env.OWNER_NUMBER || "94788175828",
 
     // 🤖 Default Fallback Settings
-    DEFAULT_BOT_NAME: process.env.DEFAULT_BOT_NAME || "ZANTA-MD",
-    DEFAULT_OWNER_NAME: process.env.DEFAULT_OWNER_NAME || "Akash nimsara",
+    DEFAULT_BOT_NAME: process.env.DEFAULT_BOT_NAME || "QUEEN-NILU-MD",
+    DEFAULT_OWNER_NAME: process.env.DEFAULT_OWNER_NAME || "Janith Sadanuwan",
     DEFAULT_PREFIX: process.env.DEFAULT_PREFIX || ".",
 
     // 🖼️ Media Settings (Alive image & Menu)
-    ALIVE_IMG: process.env.ALIVE_IMG || "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/zanta-md.png?raw=true",
-    MENU_IMG: process.env.MENU_IMG || "https://github.com/Akashkavindu/ZANTA_MD/blob/main/images/zanta-md.png?raw=true",
+    ALIVE_IMG: process.env.ALIVE_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpge",
+    MENU_IMG: process.env.MENU_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg",
 
     // ⚙️ Dashboard / Database Defaults
     // මෙම අගයන් පළමු වතාවට Database එක සෑදීමේදී භාවිත වේ (Database & Dashboard Sync)

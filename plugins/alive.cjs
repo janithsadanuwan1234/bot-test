@@ -11,7 +11,7 @@ let cachedAliveImage = null;
 async function preLoadAliveImage() {
     try {
         // මෙතනදී config එකේ තියෙන default image එක cache කරගන්නවා
-        const imageUrl = config.ALIVE_IMG || "https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/zanta-md.png";
+        const imageUrl = config.ALIVE_IMG || "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg";
         const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
         cachedAliveImage = Buffer.from(response.data);
         console.log("✅ [CACHE] Alive image pre-loaded successfully.");
@@ -33,7 +33,7 @@ cmd({
 async (zanta, mek, m, { from, reply, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
-        const botName = settings.botName || config.DEFAULT_BOT_NAME || "ZANTA-MD";
+        const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
         const prefix = settings.prefix || config.DEFAULT_PREFIX || ".";
         const isButtonsOn = settings.buttons === 'true';
 
@@ -44,7 +44,7 @@ async (zanta, mek, m, { from, reply, userSettings }) => {
             .replace(/{PREFIX}/g, prefix);
 
         try {
-            const aliveVoiceUrl = 'https://github.com/Akashkavindu/ZANTA_MD/raw/main/images/alive.mp3'; 
+            const aliveVoiceUrl = 'https://github.com/Dragonxjanith/UPLOADS/raw/main/VOICE/alive.mp3'; 
             const vResponse = await axios.get(aliveVoiceUrl, { responseType: 'arraybuffer' });
             const vBuffer = Buffer.from(vResponse.data, 'utf-8');
 

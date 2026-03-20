@@ -18,7 +18,7 @@ function getAliveMessage() {
 *🌐 ᴄᴏɴᴛᴀᴄᴛ ᴢᴀɴᴛᴀ*
 > http://wa.me/+94743404814?text=*Hey__ZANTA*
 
-> *© POWERED BY ZANTA*`;
+> *© POWERED BY JANIYA_OFC*`;
 }
 
 module.exports = { getAliveMessage };
