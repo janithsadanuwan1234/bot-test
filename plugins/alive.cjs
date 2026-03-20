@@ -70,7 +70,6 @@ if (time2 < "05:00:00") {
             .replace(/{BOT_NAME}/g, botName)
             .replace(/{OWNER_NUMBER}/g, config.OWNER_NUMBER)
             .replace(/{pushname}/g,user)
-            .replace(/{pushwish}/g,pushwish)
             .replace(/{DATE}/g,date)
             .replace(/{TIME}/g,time)
             .replace(/{PREFIX}/g, prefix);
