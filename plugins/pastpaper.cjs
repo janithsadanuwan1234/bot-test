@@ -10,7 +10,7 @@ cmd({
     filename: __filename
 }, async (bot, mek, m, { from, q, reply, prefix }) => {
     try {
-        if (!q) return reply(`📚 *ZANTA PAPER SEARCH*\n\nExample: \`${prefix}paper combined maths\``);
+        if (!q) return reply(`📚 *QUEEN-NILU PAPER SEARCH*\n\nExample: \`${prefix}paper combined maths\``);
 
         const API_URL = `https://apis.sandarux.sbs/api/download/paperhub?apikey=darknero&q=${encodeURIComponent(q)}`;
         const { data } = await axios.get(API_URL);

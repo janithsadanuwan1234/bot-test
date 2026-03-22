@@ -20,7 +20,7 @@ cmd({
 
         const id = Date.now(); // unique id
 
-        let msg = `🎵 *ZANTA AUDIO PLAYER* 🎵\n\n` +
+        let msg = `🎵 *QUEEN-NILU AUDIO PLAYER* 🎵\n\n` +
                   `📝 *Title:* ${video.title}\n` +
                   `👤 *Artist:* ${video.author.name}\n` +
                   `⏱️ *Duration:* ${video.timestamp}\n\n` +

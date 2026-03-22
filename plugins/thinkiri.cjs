@@ -13,7 +13,7 @@ cmd({
     filename: __filename
 }, async (bot, mek, m, { from, q, reply }) => {
     try {
-        if (!q) return reply("🍿 *ZANTA MOVIE SEARCH*\n\nExample: .movie2 Night Patrol");
+        if (!q) return reply("🍿 *QUEEN-NILU MOVIE SEARCH*\n\nExample: .movie2 Night Patrol");
 
         // 1. Search Movies
         const searchRes = await axios.get(`${BASE_API}/thenkiri-search?apikey=${API_KEY}&q=${encodeURIComponent(q)}`).catch(() => null);
@@ -23,7 +23,7 @@ cmd({
         }
 
         const results = searchRes.data.results.slice(0, 10);
-        let msg = `🎬 *ZANTA MOVIE SEARCH* 🎬\n\n`;
+        let msg = `🎬 *QUEEN-NILU MOVIE SEARCH* 🎬\n\n`;
         results.forEach((res, index) => { 
             msg += `${index + 1}️⃣ *${res.title.split('|')[0].trim()}*\n`; 
         });

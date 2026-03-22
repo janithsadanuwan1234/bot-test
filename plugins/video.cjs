@@ -18,7 +18,7 @@ cmd({
         const video = search.videos[0];
         if (!video) return reply("❌ No results found on YouTube.");
 
-        let msg = `🎥 *ZANTA VIDEO PLAYER* 🎥\n\n` +
+        let msg = `🎥 *QUEEN-NILU VIDEO PLAYER* 🎥\n\n` +
                   `📝 *Title:* ${video.title}\n` +
                   `👤 *Channel:* ${video.author.name}\n` +
                   `⏱️ *Duration:* ${video.timestamp}\n` +

@@ -3,7 +3,7 @@ const axios = require("axios");
 const config = require("../config.cjs");
 
 const CHANNEL_JID = "120363233854483997@newsletter"; 
-const DEFAULT_WIKI_IMAGE = "https://cdn.jsdelivr.net/gh/Akashkavindu/ZANTA_MD@main/images/QUEEN-NILU-MD.png"; 
+const DEFAULT_WIKI_IMAGE = "https://cdn.jsdelivr.net/gh/Akashkavindu/QUEEN-NILU_MD@main/images/QUEEN-NILU-MD.png"; 
 
 cmd({
     pattern: "wiki",
@@ -23,7 +23,7 @@ cmd({
         // Wikipedia 403 error එක මගහරවා ගැනීමට Header එක එකතු කර ඇත
         const response = await axios.get(url, {
             headers: {
-                'User-Agent': 'ZantaMD/1.0 (https://github.com/Akashkavindu/ZANTA_MD)'
+                'User-Agent': 'ZantaMD/1.0 (https://github.com/Akashkavindu/QUEEN-NILU_MD)'
             }
         });
 

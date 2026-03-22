@@ -15,7 +15,7 @@ cmd({
     filename: __filename
 }, async (bot, mek, m, { from, q, reply }) => {
     try {
-        if (!q) return reply("🔞 *ZANTA XNXX SEARCH*\n\nExample: .xnxx blue film");
+        if (!q) return reply("🔞 *QUEEN-NILU XNXX SEARCH*\n\nExample: .xnxx blue film");
 
         const searchRes = await axios.get(`${SEARCH_API}?apikey=${API_KEY}&q=${encodeURIComponent(q)}`).catch(() => null);
         
@@ -24,7 +24,7 @@ cmd({
         }
 
         const results = searchRes.data.data.slice(0, 10);
-        let msg = `🔞 *ZANTA XNXX SEARCH* 🔞\n\n🔍 Query: *${q}*\n\n`;
+        let msg = `🔞 *QUEEN-NILU XNXX SEARCH* 🔞\n\n🔍 Query: *${q}*\n\n`;
         results.forEach((res, index) => {
             msg += `${index + 1}️⃣ *${res.title}*\n`;
         });

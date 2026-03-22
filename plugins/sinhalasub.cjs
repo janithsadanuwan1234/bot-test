@@ -16,13 +16,13 @@ cmd({
     filename: __filename
 }, async (bot, mek, m, { from, q, reply }) => {
     try {
-        if (!q) return reply("🎬 *ZANTA MOVIE SEARCH*\n\nExample: .movie Avengers");
+        if (!q) return reply("🎬 *QUEEN-NILU MOVIE SEARCH*\n\nExample: .movie Avengers");
 
         const searchRes = await axios.get(`${BASE_API}/sinhalasub-search?apikey=${API_KEY}&q=${encodeURIComponent(q)}`).catch(() => null);
         if (!searchRes || !searchRes.data.status || !searchRes.data.results.length) return reply("❌ කිසිදු ප්‍රතිඵලයක් හමු නොවීය.");
 
         const results = searchRes.data.results.slice(0, 10);
-        let msg = `🎬 *ZANTA MOVIE SEARCH* 🎬\n\n`;
+        let msg = `🎬 *QUEEN-NILU MOVIE SEARCH* 🎬\n\n`;
         results.forEach((res, index) => { msg += `${index + 1}️⃣ *${res.title.split('|')[0].trim()}*\n`; });
         msg += `\n*Reply with the number to see quality list.* \n\n> *© QUEEN-NILU-MD MOVIE SERVICE*`;
 
