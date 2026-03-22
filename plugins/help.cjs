@@ -46,7 +46,7 @@ cmd({
 🔗 *GitHub:* 🤐
 🔗 *WhatsApp:* http://wa.me/+94788175828?text=*Hey__JANIYA
 
-> *© ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ*`;
+> *© ᴘᴏᴡᴇʀᴅ ʙʏ ǫᴜᴇᴇɴ-ɴɪʟᴜ-ᴍᴅ*`;
             return reply(devMsg);
         }
 

@@ -104,7 +104,7 @@ if (time2 < "05:00:00") {
             return await zanta.sendMessage(from, {
                 image: imageToDisplay, 
                 caption: finalMsg,
-                footer: `© ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ`,
+                footer: `© ᴘᴏᴡᴇʀᴅ ʙʏ ǫᴜᴇᴇɴ-ɴɪʟᴜ-ᴍᴅ`,
                 buttons: [
                     { buttonId: prefix + "menu", buttonText: { displayText: "📜 MENU" }, type: 1 },
                     { buttonId: prefix + "ping", buttonText: { displayText: "⚡ PING" }, type: 1 },

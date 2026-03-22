@@ -29,7 +29,7 @@ cmd({
         const sentMsg = await bot.sendMessage(from, {
             image: { url: video.thumbnail },
             caption: msg,
-            footer: "© QUEEN-NILU-MD SONG SERVICE",
+            footer: "© ᴘᴏᴡᴇʀᴅ ʙʏ ǫᴜᴇᴇɴ-ɴɪʟᴜ-ᴍᴅ",
             buttons: [
                 {
                     buttonId: `song_audio_${id}`,
