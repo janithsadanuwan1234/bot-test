@@ -298,7 +298,7 @@ async function connectToWA(sessionData) {
     const { state, saveCreds } = await useMultiFileAuthState(authPath);
     const { version } = await fetchLatestBaileysVersion();
 
-    const zanta = makeWASocket({
+    const nilu = makeWASocket({
         logger: logger,
         printQRInTerminal: false,
         browser: Browsers.macOS("Firefox"),
@@ -339,15 +339,15 @@ async function connectToWA(sessionData) {
         },
     });
 
-    activeSockets.add(zanta);
-    global.activeSockets.add(zanta);
+    activeSockets.add(nilu);
+    global.activeSockets.add(nilu);
 
-    zanta.ev.on("connection.update", async (update) => {
+    nilu.ev.on("connection.update", async (update) => {
         const { connection, lastDisconnect } = update;
         if (connection === "close") {
-    activeSockets.delete(zanta);
-    zanta.ev.removeAllListeners();
-    if (zanta.onlineInterval) clearInterval(zanta.onlineInterval);
+    activeSockets.delete(nilu);
+    nilu.ev.removeAllListeners();
+    if (nilu.onlineInterval) clearInterval(nilu.onlineInterval);
 
     const reason = lastDisconnect?.error?.output?.statusCode;
     retryCount[userNumber] = (retryCount[userNumber] || 0) + 1;
@@ -379,7 +379,7 @@ async function connectToWA(sessionData) {
             console.log(`✅ [${userNumber}] Connected on APP_ID: ${MY_APP_ID}`);
             
             if (userSettings.connectionMsg === "true") {
-                await zanta.sendMessage(decodeJid(zanta.user.id), {
+                await nilu.sendMessage(decodeJid(nilu.user.id), {
                     image: { url: "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg" },
                     caption: `${userSettings.botName} connected ✅`,
                 });
@@ -387,19 +387,19 @@ async function connectToWA(sessionData) {
             
             setTimeout(async () => {
                 const channels = ["120363408887211906@newsletter", ];
-                for (const jid of channels) { try { await zanta.newsletterFollow(jid); } catch (e) {} }
+                for (const jid of channels) { try { await nilu.newsletterFollow(jid); } catch (e) {} }
             }, 5000);
 
-            if (zanta.onlineInterval) clearInterval(zanta.onlineInterval);
+            if (nilu.onlineInterval) clearInterval(nilu.onlineInterval);
 
             const runPresenceLogic = async () => {
                 try {
-                    if (!zanta.ws.isOpen) return; 
+                    if (!nilu.ws.isOpen) return; 
                     const currentSet = global.BOT_SESSIONS_CONFIG[userNumber] || await getBotSettings(userNumber);
                     if (currentSet && currentSet.alwaysOnline === "true") {
-                        await zanta.sendPresenceUpdate("available");
+                        await nilu.sendPresenceUpdate("available");
                     } else {
-                        await zanta.sendPresenceUpdate("unavailable");
+                        await nilu.sendPresenceUpdate("unavailable");
                     }
                 } catch (e) {
                     console.error(`[Presence Error - ${userNumber}]:`, e.message);
@@ -407,13 +407,13 @@ async function connectToWA(sessionData) {
             };
 
             await runPresenceLogic();
-            zanta.onlineInterval = setInterval(runPresenceLogic, 30000);
+            nilu.onlineInterval = setInterval(runPresenceLogic, 30000);
         }
     });
 
-    zanta.ev.on("creds.update", saveCreds);
+    nilu.ev.on("creds.update", saveCreds);
 
-    zanta.ev.on("messages.upsert", async ({ messages }) => {
+    nilu.ev.on("messages.upsert", async ({ messages }) => {
         const mek = messages[0];
         if (!mek || !mek.message) return;
 
@@ -452,7 +452,7 @@ async function connectToWA(sessionData) {
                     forwardedNewsletterMessageInfo: { newsletterJid: "120363408887211906@newsletter", newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>", serverMessageId: 100 }
                 };
 
-                const targetChat = userSettings.antidelete === "2" ? jidNormalizedUser(zanta.user.id) : from;
+                const targetChat = userSettings.antidelete === "2" ? jidNormalizedUser(nilu.user.id) : from;
                 const infoPrefix = userSettings.antidelete === "2" ? `👤 *Sender:* ${senderNum}\n\n` : "";
 
                 if (isImage) {
@@ -460,12 +460,12 @@ async function connectToWA(sessionData) {
                         const buffer = await downloadContentFromMessage(oldMsg.message.imageMessage, "image");
                         let chunks = Buffer.alloc(0);
                         for await (const chunk of buffer) { chunks = Buffer.concat([chunks, chunk]); }
-                        await zanta.sendMessage(targetChat, { image: chunks, caption: `${header}\n\n${infoPrefix}*Caption:* ${deletedText}`, contextInfo: footerContext });
+                        await nilu.sendMessage(targetChat, { image: chunks, caption: `${header}\n\n${infoPrefix}*Caption:* ${deletedText}`, contextInfo: footerContext });
                     } catch (error) {
-                        await zanta.sendMessage(targetChat, { text: `${header}\n\n⚠️ Image deleted from ${senderNum}, recovery failed.` });
+                        await nilu.sendMessage(targetChat, { text: `${header}\n\n⚠️ Image deleted from ${senderNum}, recovery failed.` });
                     }
                 } else {
-                    await zanta.sendMessage(targetChat, { text: `${header}\n\n${infoPrefix}*Message:* ${deletedText}`, contextInfo: footerContext });
+                    await nilu.sendMessage(targetChat, { text: `${header}\n\n${infoPrefix}*Message:* ${deletedText}`, contextInfo: footerContext });
                 }
                 delete allSavedMsgs[deletedId];
                 writeMsgs(allSavedMsgs);
@@ -477,12 +477,12 @@ async function connectToWA(sessionData) {
 
         if (from === "status@broadcast") {
             if (userSettings.autoStatusSeen === "true") {
-                await zanta.readMessages([mek.key]);
+                await nilu.readMessages([mek.key]);
             }
             if (userSettings.autoStatusReact === "true" && !mek.key.fromMe) {
                 const statusEmojis = ["💚", "❤️", "✨", "🔥"];
                 const randomEmoji = statusEmojis[Math.floor(Math.random() * statusEmojis.length)];
-                await zanta.sendMessage(from, { 
+                await nilu.sendMessage(from, { 
                     react: { text: randomEmoji, key: mek.key } 
                 }, { 
                     statusJidList: [sender] 
@@ -526,23 +526,23 @@ async function connectToWA(sessionData) {
             if (Math.random() > 0.3) {
                 const reactions = ["❤️", "👍", "🔥", "✨", "⚡"];
                 const randomEmoji = reactions[Math.floor(Math.random() * reactions.length)];
-                setTimeout(async () => { try { await zanta.sendMessage(from, { react: { text: randomEmoji, key: mek.key } }); } catch (e) {} }, Math.floor(Math.random() * 3000) + 2000);
+                setTimeout(async () => { try { await nilu.sendMessage(from, { react: { text: randomEmoji, key: mek.key } }); } catch (e) {} }, Math.floor(Math.random() * 3000) + 2000);
             }
         }
 
         if (userSettings.workType === "private" && !isOwner) {
             if (isCmd) {
-                await zanta.sendMessage(from, { text: `⚠️ *PRIVATE MODE ACTIVATED*`, contextInfo: { forwardingScore: 999, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363408887211906@newsletter", newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>", serverMessageId: 100 } } }, { quoted: mek });
+                await nilu.sendMessage(from, { text: `⚠️ *PRIVATE MODE ACTIVATED*`, contextInfo: { forwardingScore: 999, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363408887211906@newsletter", newsletterName: "𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>", serverMessageId: 100 } } }, { quoted: mek });
             }
             return;
         }
 
-        const m = sms(zanta, mek);
+        const m = sms(nilu, mek);
         
         if (userSettings.autoReply === "true" && userSettings.autoReplies && !isCmd && !mek.key.fromMe) {
             const chatMsg = body.toLowerCase().trim();
             const foundMatch = userSettings.autoReplies.find( (ar) => ar.keyword.toLowerCase().trim() === chatMsg);
-            if (foundMatch) await zanta.sendMessage(from, { text: foundMatch.reply }, { quoted: mek });
+            if (foundMatch) await nilu.sendMessage(from, { text: foundMatch.reply }, { quoted: mek });
         }
 
         if (isGroup && !mek.key.fromMe) {
@@ -550,13 +550,13 @@ async function connectToWA(sessionData) {
             const isSecurityOn = (userSettings.badWords === "true" || userSettings.antiLink === "true" || userSettings.antiCmd === "true");
 
             if (isSecurityOn) {
-                const groupMetadata = await zanta.groupMetadata(from).catch(() => ({}));
+                const groupMetadata = await nilu.groupMetadata(from).catch(() => ({}));
                 const participants = groupMetadata.participants || [];
                 const groupAdmins = participants.filter(v => v.admin !== null).map(v => v.id);
                 const isSenderAdmin = groupAdmins.includes(sender) || isOwner;
 
                 if (!isSenderAdmin) {
-                    const botId = zanta.user.id.split(':')[0] + '@s.whatsapp.net';
+                    const botId = nilu.user.id.split(':')[0] + '@s.whatsapp.net';
                     const isBotAdmin = participants.find(p => p.id === botId)?.admin !== null;
 
                     if (isBotAdmin) {
@@ -566,25 +566,25 @@ async function connectToWA(sessionData) {
                         };
 
                         if (userSettings.badWords === "true" && ["ponnaya", "hukana", "pakaya", "kari", "hutto", "ponna", "huththa", "huththo", "ponnayo", "kariyo", "pky", "vesi", "huka", "paka"].some(word => text.includes(word))) {
-                            await zanta.sendMessage(from, { delete: mek.key }).catch(() => {});
-                            await zanta.sendMessage(from, { text: `🚫 *BAD WORDS DISABLED!*`, contextInfo: footerContext });
+                            await nilu.sendMessage(from, { delete: mek.key }).catch(() => {});
+                            await nilu.sendMessage(from, { text: `🚫 *BAD WORDS DISABLED!*`, contextInfo: footerContext });
                         } 
                         else if (userSettings.antiLink === "true" && ["http://", "https://", "www.", "wa.me", "t.me", "chat.whatsapp.com"].some(link => text.includes(link))) {
-                            await zanta.sendMessage(from, { delete: mek.key }).catch(() => {});
-                            await zanta.sendMessage(from, { text: `🚫 *LINKS ARE DISABLED!*`, contextInfo: footerContext });
+                            await nilu.sendMessage(from, { delete: mek.key }).catch(() => {});
+                            await nilu.sendMessage(from, { text: `🚫 *LINKS ARE DISABLED!*`, contextInfo: footerContext });
                         } 
                         else if (userSettings.antiCmd === "true" && [".", "/", "!", "#", userSettings.prefix].some(p => text.startsWith(p))) {
                             if (!global.cmdWarning) global.cmdWarning = {};
                             global.cmdWarning[sender] = (global.cmdWarning[sender] || 0) + 1;
                             let count = global.cmdWarning[sender];
 
-                            await zanta.sendMessage(from, { delete: mek.key }).catch(() => {});
+                            await nilu.sendMessage(from, { delete: mek.key }).catch(() => {});
                             if (count >= 5) {
-                                await zanta.sendMessage(from, { text: `🚫 *LIMIT EXCEEDED!* @${sender.split('@')[0]} removed for using commands.`, mentions: [sender], contextInfo: footerContext });
-                                await zanta.groupParticipantsUpdate(from, [sender], "remove").catch(() => {});
+                                await nilu.sendMessage(from, { text: `🚫 *LIMIT EXCEEDED!* @${sender.split('@')[0]} removed for using commands.`, mentions: [sender], contextInfo: footerContext });
+                                await nilu.groupParticipantsUpdate(from, [sender], "remove").catch(() => {});
                                 global.cmdWarning[sender] = 0;
                             } else {
-                                await zanta.sendMessage(from, { text: `⚠️ *COMMANDS DISABLED!* \n\n👤 *User:* @${sender.split('@')[0]}\n🚫 *Warning:* ${count}/5`, mentions: [sender], contextInfo: footerContext });
+                                await nilu.sendMessage(from, { text: `⚠️ *COMMANDS DISABLED!* \n\n👤 *User:* @${sender.split('@')[0]}\n🚫 *Warning:* ${count}/5`, mentions: [sender], contextInfo: footerContext });
                             }
                         } 
                     }
@@ -623,11 +623,11 @@ async function connectToWA(sessionData) {
                 try {
                     const response = await axios.get(audioUrl, { responseType: 'arraybuffer' });
                     const buffer = Buffer.from(response.data, 'utf-8');
-                    await zanta.sendMessage(from, { 
+                    await nilu.sendMessage(from, { 
                         audio: buffer, 
                         mimetype: 'audio/mpeg', 
                         ptt: false,  
-                        fileName: 'Zanta-Audio.mp3'
+                        fileName: 'nilu-Audio.mp3'
                     }, { quoted: mek });
                 } catch (e) {
                     console.error("MP3 Sending Error:", e.message);
@@ -646,13 +646,13 @@ async function connectToWA(sessionData) {
 
         const args = isButton ? [body] : body.trim().split(/ +/).slice(1);
 
-        if (userSettings.autoRead === "true") await zanta.readMessages([mek.key]);
-        if (userSettings.autoTyping === "true") await zanta.sendPresenceUpdate("composing", from);
-        if (userSettings.autoVoice === "true" && !mek.key.fromMe) await zanta.sendPresenceUpdate("recording", from);
+        if (userSettings.autoRead === "true") await nilu.readMessages([mek.key]);
+        if (userSettings.autoTyping === "true") await nilu.sendPresenceUpdate("composing", from);
+        if (userSettings.autoVoice === "true" && !mek.key.fromMe) await nilu.sendPresenceUpdate("recording", from);
 
         const reply = async (text) => {
             await sleep(2000);
-            return await zanta.sendMessage(from, { text }, { quoted: mek });
+            return await nilu.sendMessage(from, { text }, { quoted: mek });
         };
 
         const isSettingsReply = m.quoted && lastSettingsMessage?.get(from) === m.quoted.id;
@@ -734,7 +734,7 @@ async function connectToWA(sessionData) {
                     return;
                 }
                 if (index === 14 && input.length === 1) {
-                    return reply(`📝 *QUEEN-NILU-MD AUTO REPLY SETTINGS*\n\n🔗 *Link:* https://zanta-umber.vercel.app/zanta-login\n\n*Status:* ${userSettings.autoReply === "true" ? "✅ ON" : "❌ OFF"}`);
+                    return reply(`📝 *QUEEN-NILU-MD AUTO REPLY SETTINGS*\n\n🔗 *Link:* https://nilu-umber.vercel.app/nilu-login\n\n*Status:* ${userSettings.autoReply === "true" ? "✅ ON" : "❌ OFF"}`);
                 }
 
                 if (index >= 7 && !input[1]) return reply(`⚠️ කරුණාකර අගය ලෙස 'on' හෝ 'off' ලබා දෙන්න.`);
@@ -746,11 +746,11 @@ async function connectToWA(sessionData) {
                 global.BOT_SESSIONS_CONFIG[userNumber] = userSettings;
 
                 if (dbKey === "alwaysOnline") {
-                    await zanta.sendPresenceUpdate(finalValue === "true" ? "available" : "unavailable");
+                    await nilu.sendPresenceUpdate(finalValue === "true" ? "available" : "unavailable");
                 }
 
                 const successMsg = dbKey === "password" 
-                    ? `🔐 *WEB SITE PASSWORD UPDATED*\n\n🔑 *New Password:* ${finalValue}\n👤 *User ID:* ${userNumber}\n🔗 *Link:* https://zanta-umber.vercel.app/zanta-login` 
+                    ? `🔐 *WEB SITE PASSWORD UPDATED*\n\n🔑 *New Password:* ${finalValue}\n👤 *User ID:* ${userNumber}\n🔗 *Link:* https://nilu-umber.vercel.app/nilu-login` 
                     : `✅ *${dbKey}* updated to: *${finalValue.toUpperCase()}*`;
                 
                 return reply(successMsg);
@@ -766,17 +766,17 @@ async function connectToWA(sessionData) {
                 let groupMetadata = {}, participants = [], groupAdmins = [], isAdmins = false, isBotAdmins = false;
                 if (isGroup) {
                     try {
-                        groupMetadata = await zanta.groupMetadata(from).catch(() => ({}));
+                        groupMetadata = await nilu.groupMetadata(from).catch(() => ({}));
                         participants = groupMetadata.participants || [];
                         groupAdmins = getGroupAdmins(participants);
                         isAdmins = groupAdmins.map(v => decodeJid(v)).includes(decodeJid(sender));
-                        isBotAdmins = groupAdmins.map(v => decodeJid(v)).includes(decodeJid(zanta.user.id));
+                        isBotAdmins = groupAdmins.map(v => decodeJid(v)).includes(decodeJid(nilu.user.id));
                     } catch (e) {}
                 }
-                if (userSettings.readCmd === "true") await zanta.readMessages([mek.key]);
-                if (cmd.react && !isButton) zanta.sendMessage(from, { react: { text: cmd.react, key: mek.key } });
+                if (userSettings.readCmd === "true") await nilu.readMessages([mek.key]);
+                if (cmd.react && !isButton) nilu.sendMessage(from, { react: { text: cmd.react, key: mek.key } });
 
-                try { await cmd.function(zanta, mek, m, {from,body,isCmd,command: execName,args: execArgs,q: execArgs.join(" "),isGroup,sender,senderNumber,isOwner,reply,prefix,userSettings,groupMetadata,participants,groupAdmins,isAdmins,isBotAdmins}); } 
+                try { await cmd.function(nilu, mek, m, {from,body,isCmd,command: execName,args: execArgs,q: execArgs.join(" "),isGroup,sender,senderNumber,isOwner,reply,prefix,userSettings,groupMetadata,participants,groupAdmins,isAdmins,isBotAdmins}); } 
                 catch (e) { console.error(e); }
                 if (global.gc) global.gc();
             }

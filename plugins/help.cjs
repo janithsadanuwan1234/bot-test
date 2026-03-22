@@ -29,7 +29,7 @@ cmd({
     react: "❓",
     desc: "බොට් සහාය මධ්‍යස්ථානය.",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, args, pushname, userSettings }) => {
+}, async (nilu, mek, m, { from, reply, args, pushname, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
@@ -96,7 +96,7 @@ _ස්තුතියි!_`;
             imageToDisplay = cachedHelpImage || { url: HELP_IMG_URL };
         }
 
-        const sentHelp = await zanta.sendMessage(from, { 
+        const sentHelp = await nilu.sendMessage(from, { 
             image: imageToDisplay, 
             caption: mainHelp 
         }, { quoted: mek });

@@ -10,7 +10,7 @@ cmd(
         category: "media",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, reply, args, prefix }) => {
+    async (nilu, mek, m, { from, reply, args, prefix }) => {
         try {
             if (!m.quoted) {
                 return reply(`❌ Status message එකකට reply කර *${prefix}get* ලෙස යවන්න.`);
@@ -38,7 +38,7 @@ cmd(
             if (type === 'imageMessage' || type === 'videoMessage') {
 
                 reply("📥 Status Download කරමින්...");
-                await zanta.sendMessage(from, { react: { text: "⏳", key: mek.key } });
+                await nilu.sendMessage(from, { react: { text: "⏳", key: mek.key } });
 
                 // --- RAM එක ඉතිරි කරගන්නා අලුත් ක්‍රමය (Streaming) ---
                 const stream = await downloadContentFromMessage(
@@ -55,13 +55,13 @@ cmd(
                 const senderJid = quotedObject.sender;
                 const caption = `${type === 'imageMessage' ? '🖼️ *Status Image Saved*' : '📹 *Status Video Saved*'}\nStatus Owner: @${senderJid.split('@')[0]}`;
 
-                await zanta.sendMessage(from, { 
+                await nilu.sendMessage(from, { 
                     [type === 'imageMessage' ? 'image' : 'video']: buffer, 
                     caption: caption,
                     mentions: [senderJid]
                 }, { quoted: mek });
 
-                await zanta.sendMessage(from, { react: { text: "✅", key: mek.key } });
+                await nilu.sendMessage(from, { react: { text: "✅", key: mek.key } });
 
             } else {
                 return reply(`❌ මෙම Status වර්ගය (${type}) Save කළ නොහැක.`);

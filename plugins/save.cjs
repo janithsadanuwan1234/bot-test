@@ -10,7 +10,7 @@ cmd(
     category: "media",
     filename: __filename,
 },
-async (zanta, mek, m, { from, reply }) => {
+async (nilu, mek, m, { from, reply }) => {
     try {
         // 1. Reply පණිවිඩයක් දැයි පරීක්ෂා කිරීම
         if (!m.quoted) {
@@ -38,7 +38,7 @@ async (zanta, mek, m, { from, reply }) => {
         }
 
         reply("💾 View Once Media Download කරමින්...");
-        await zanta.sendMessage(from, { react: { text: "⏳", key: mek.key } });
+        await nilu.sendMessage(from, { react: { text: "⏳", key: mek.key } });
 
         // 4. Media Streaming (RAM එක පිරීම පාලනය කරයි)
         // මුළු ෆයිල් එකම එකපාර RAM එකට ගන්නේ නැතිව කැබලි (Chunks) විදිහට ලබා ගනී
@@ -64,8 +64,8 @@ async (zanta, mek, m, { from, reply }) => {
             mentions: [senderJid]
         };
 
-        await zanta.sendMessage(from, messageOptions, { quoted: mek });
-        await zanta.sendMessage(from, { react: { text: '✅', key: mek.key } });
+        await nilu.sendMessage(from, messageOptions, { quoted: mek });
+        await nilu.sendMessage(from, { react: { text: '✅', key: mek.key } });
 
     } catch (e) {
         console.error("Save Command Error:", e);

@@ -32,12 +32,12 @@ cmd({
     desc: "create QR Code.",
     category: "tools",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, args }) => {
+}, async (nilu, mek, m, { from, reply, args }) => {
     try {
         let text = args.join(" ");
         if (!text) return reply("*වචනයක් හෝ ලින්ක් එකක් ලබාදෙන්න!* ❌");
         let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(text)}`;
-        await zanta.sendMessage(from, { 
+        await nilu.sendMessage(from, { 
             image: { url: qrUrl }, 
             caption: `*QR for:* ${text}`,
             contextInfo: contextInfo 
@@ -53,7 +53,7 @@ cmd({
     desc: "Convert text into stylish fonts.",
     category: "tools",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, q }) => {
+}, async (nilu, mek, m, { from, reply, q }) => {
     try {
         if (!q) return reply("✍️ *වචනයක් ලබා දෙන්න.*");
         const normalChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -75,7 +75,7 @@ cmd({
             }
             result += `📍 *${styleName}*\n${styledText}\n\n`;
         }
-        await zanta.sendMessage(from, { text: result + `> *© QUEEN-NILU-MD*`, contextInfo: contextInfo }, { quoted: mek });
+        await nilu.sendMessage(from, { text: result + `> *© QUEEN-NILU-MD*`, contextInfo: contextInfo }, { quoted: mek });
     } catch (err) { reply("❌ Error!"); }
 });
 
@@ -86,12 +86,12 @@ cmd({
     desc: "ASCII art symbols.",
     category: "tools",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, q }) => {
+}, async (nilu, mek, m, { from, reply, q }) => {
     try {
         if (!q || q.length > 6) return reply("⚠️ *අකුරු 6ක් පමණක් ලබා දෙන්න.*");
         figlet(q, function(err, data) {
             if (err) return reply("❌ Error!");
-            zanta.sendMessage(from, { 
+            nilu.sendMessage(from, { 
                 text: "```" + data + "```\n\n> *© QUEEN-NILU-MD*", 
                 contextInfo: contextInfo 
             }, { quoted: mek });

@@ -12,11 +12,11 @@ cmd({
     category: "media",
     react: "🌐",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, q, prefix, userSettings }) => {
+}, async (nilu, mek, m, { from, reply, q, prefix, userSettings }) => {
     try {
         if (!q) return reply(`⚠️ කරුණාකර සෙවිය යුතු මාතෘකාව ලබා දෙන්න.\n\n*E.g:* \`${prefix}wiki OpenAI\``);
 
-        const loading = await zanta.sendMessage(from, { text: `🔍 *"${q}" ගැන සොයමින් පවතී...*` }, { quoted: mek });
+        const loading = await nilu.sendMessage(from, { text: `🔍 *"${q}" ගැන සොයමින් පවතී...*` }, { quoted: mek });
 
         const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`;
 
@@ -30,7 +30,7 @@ cmd({
         const data = response.data;
 
         if (data.type === 'disambiguation' || !data.extract) {
-            return await zanta.sendMessage(from, { text: "❌ කිසිදු තොරතුරක් හමු නොවීය. කරුණාකර නිවැරදි වචනයක් ලබා දෙන්න.", edit: loading.key });
+            return await nilu.sendMessage(from, { text: "❌ කිසිදු තොරතුරක් හමු නොවීය. කරුණාකර නිවැරදි වචනයක් ලබා දෙන්න.", edit: loading.key });
         }
 
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
@@ -55,17 +55,17 @@ cmd({
 
         const imageUrl = (data.thumbnail && data.thumbnail.source) ? data.thumbnail.source : DEFAULT_WIKI_IMAGE;
 
-        await zanta.sendMessage(from, {
+        await nilu.sendMessage(from, {
             image: { url: imageUrl },
             caption: wikiMsg,
             contextInfo: contextInfo
         }, { quoted: mek });
 
-        await zanta.sendMessage(from, { text: "✅ *Search Completed!*", edit: loading.key });
+        await nilu.sendMessage(from, { text: "✅ *Search Completed!*", edit: loading.key });
 
     } catch (e) {
         console.error(e);
         // Wikipedia එකේ සර්ච් කරන වචනය නැති වුණොත් එන Error එක හැඩල් කිරීම
-        await zanta.sendMessage(from, { text: "❌ තොරතුරු ලබාගැනීමේදී දෝෂයක් සිදු විය. කරුණාකර නිවැරදි ඉංග්‍රීසි වචනයක් පාවිච්චි කරන්න." });
+        await nilu.sendMessage(from, { text: "❌ තොරතුරු ලබාගැනීමේදී දෝෂයක් සිදු විය. කරුණාකර නිවැරදි ඉංග්‍රීසි වචනයක් පාවිච්චි කරන්න." });
     }
 });

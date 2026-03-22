@@ -15,7 +15,7 @@ cmd({
     category: "main",
     react: "⚙️",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, sender, isOwner, prefix, userSettings }) => {
+}, async (nilu, mek, m, { from, reply, sender, isOwner, prefix, userSettings }) => {
 
     // --- 🛡️ Access Control Setup ---
     const allowedNumbers = [
@@ -90,7 +90,7 @@ cmd({
     statusText += `*–––––––––––––––––––––––––*\n`;
     statusText += `> *ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ*`;
 
-    const sentMsg = await zanta.sendMessage(from, {
+    const sentMsg = await nilu.sendMessage(from, {
         image: { url: displayImg },
         caption: statusText
     }, { quoted: mek });

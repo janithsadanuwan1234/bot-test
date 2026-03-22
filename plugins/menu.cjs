@@ -30,7 +30,7 @@ cmd({
     category: "main",
     filename: __filename,
 },
-async (zanta, mek, m, { from, reply, args, userSettings }) => {
+async (nilu, mek, m, { from, reply, args, userSettings }) => {
     try {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const finalPrefix = settings.prefix || config.DEFAULT_PREFIX || '.'; 
@@ -97,7 +97,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
             });
             commandList += `╰━━━━━━━━━━━━━━┈⊷\n\n> *© ${botName}*`;
 
-            return await zanta.sendMessage(from, { text: commandList, contextInfo }, { quoted: mek }); 
+            return await nilu.sendMessage(from, { text: commandList, contextInfo }, { quoted: mek }); 
         }
 
         let headerText = `╭━〔 ${botName} WA BOT 〕━··๏\n`;
@@ -112,7 +112,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
         }
 
         if (isButtonsOn) {
-            return await zanta.sendMessage(from, {
+            return await nilu.sendMessage(from, {
                 image: imageToDisplay,
                 caption: headerText + "ꜱᴇʟᴇᴄᴛ 👇",
                 footer: `© ᴘᴏᴡᴇʀᴅ ʙʏ ǫᴜᴇᴇɴ-ɴɪʟᴜ-ᴍᴅ`,
@@ -135,7 +135,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
             });
             menuText += `╰━━━━━━━━━━━━━━┈⊷\n\n_💡 Reply with number to select._`;
 
-            const sent = await zanta.sendMessage(from, {
+            const sent = await nilu.sendMessage(from, {
                 image: imageToDisplay,
                 caption: menuText,
                 contextInfo

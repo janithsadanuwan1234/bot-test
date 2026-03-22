@@ -9,7 +9,7 @@ cmd({
     desc: "Download Facebook Videos.",
     category: "download",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, q, userSettings }) => {
+}, async (nilu, mek, m, { from, reply, q, userSettings }) => {
     try {
         if (!q) return reply("❤️ *කරුණාකර Facebook වීඩියෝ ලින්ක් එකක් ලබා දෙන්න.*");
 
@@ -27,7 +27,7 @@ cmd({
         const loadingDesc = `╭━─━─━─━─━─━──━╮\n┃ *${currentBotName} FB Downloader*\n╰━─━─━─━─━─━──━╯\n\n⏳ *Waiting for download...*`;
 
         // 1. මුලින්ම පින්තූරය සහ "Downloading" Caption එක සහිත පණිවිඩය යවයි
-        const sentMsg = await zanta.sendMessage(from, {
+        const sentMsg = await nilu.sendMessage(from, {
             image: displayImg,
             caption: loadingDesc,
         }, { quoted: mek });
@@ -36,7 +36,7 @@ cmd({
 
         if (!result || (!result.sd && !result.hd)) {
             // අසාර්ථක වුවහොත් පණිවිඩය Edit කරයි
-            return await zanta.sendMessage(from, { 
+            return await nilu.sendMessage(from, { 
                 text: "☹️ *Failed to download video. Please check the link.*", 
                 edit: sentMsg.key 
             });
@@ -48,13 +48,13 @@ cmd({
         // 2. බාගත කිරීම අවසන් වූ පසු Caption එක Edit කිරීම
         const successDesc = `╭━─━─━─━─━─━──━╮\n┃ *${currentBotName} FB Downloader*\n╰━─━─━─━─━─━──━╯\n\n✅ *Status:* Download Completed!\n👻 *Quality:* ${quality}`;
 
-        await zanta.sendMessage(from, { 
+        await nilu.sendMessage(from, { 
             text: successDesc, 
             edit: sentMsg.key 
         });
 
         // 3. වීඩියෝව යැවීම
-        await zanta.sendMessage(from, {
+        await nilu.sendMessage(from, {
             video: { url: bestUrl },
             caption: `*📥 Quality: ${quality}*\n\n> *© ${currentBotName}*`,
         }, { quoted: mek });

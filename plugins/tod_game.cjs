@@ -40,7 +40,7 @@ cmd(
         filename: __filename,
     },
     async (
-        zanta,
+        nilu,
         mek,
         m,
         {
@@ -85,7 +85,7 @@ cmd(
                 mentions: [m.sender] 
             };
 
-            return zanta.sendMessage(from, { text: response, contextInfo: options }, { quoted: mek });
+            return nilu.sendMessage(from, { text: response, contextInfo: options }, { quoted: mek });
 
 
         } catch (err) {

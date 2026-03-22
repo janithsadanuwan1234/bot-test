@@ -12,11 +12,11 @@ cmd({
     category: "download",
     react: "🖼️",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, q, prefix, userSettings }) => {
+}, async (nilu, mek, m, { from, reply, q, prefix, userSettings }) => {
     try {
         if (!q) return reply(`⚠️ කරුණාකර සෙවිය යුතු පින්තූරයේ නම ලබා දෙන්න.\n\n*E.g:* \`${prefix}wallpaper Galaxy\``);
 
-        const loading = await zanta.sendMessage(from, { text: `📸 *"${q}" පින්තූර සොයමින් පවතී...*` }, { quoted: mek });
+        const loading = await nilu.sendMessage(from, { text: `📸 *"${q}" පින්තූර සොයමින් පවතී...*` }, { quoted: mek });
 
         // Unsplash API එකෙන් පින්තූර සෙවීම (Random 1 photo)
         const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(q)}&client_id=${UNSPLASH_KEY}&per_page=1`;
@@ -25,7 +25,7 @@ cmd({
         const data = response.data;
 
         if (!data.results || data.results.length === 0) {
-            return await zanta.sendMessage(from, { text: "❌ කිසිදු පින්තූරයක් හමු නොවීය. කරුණාකර වෙනත් නමකින් උත්සාහ කරන්න.", edit: loading.key });
+            return await nilu.sendMessage(from, { text: "❌ කිසිදු පින්තූරයක් හමු නොවීය. කරුණාකර වෙනත් නමකින් උත්සාහ කරන්න.", edit: loading.key });
         }
 
         const result = data.results[0];
@@ -47,7 +47,7 @@ cmd({
         };
 
         // පින්තූරය යැවීම
-        await zanta.sendMessage(from, {
+        await nilu.sendMessage(from, {
             image: { url: imageUrl },
             caption: `🖼️ *𝒁𝑨𝑵𝑻𝑨-𝑴𝑫 𝑯𝑫 𝑾𝑨𝑳𝑳𝑷𝑨𝑷𝑬𝑹* 🖼️\n\n` +
                      `✨ *Search:* ${q}\n` +
@@ -56,12 +56,12 @@ cmd({
             contextInfo: contextInfo
         }, { quoted: mek });
 
-        await zanta.sendMessage(from, { text: "✅ *Upload Completed!*", edit: loading.key });
+        await nilu.sendMessage(from, { text: "✅ *Upload Completed!*", edit: loading.key });
 
     } catch (e) {
         console.error(e);
         let errorMsg = "❌ දෝෂයක් සිදු විය.";
         if (e.response && e.response.status === 401) errorMsg = "❌ API Key එක වැරදියි හෝ කාලය ඉකුත් වී ඇත.";
-        await zanta.sendMessage(from, { text: errorMsg });
+        await nilu.sendMessage(from, { text: errorMsg });
     }
 });

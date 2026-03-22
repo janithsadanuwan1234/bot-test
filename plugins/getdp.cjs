@@ -1,5 +1,5 @@
 const { cmd } = require("../command.cjs");
-// profilePictureUrl function එකට Baileys client object එක (zanta) අවශ්‍යයි.
+// profilePictureUrl function එකට Baileys client object එක (nilu) අවශ්‍යයි.
 
 cmd(
     {
@@ -10,7 +10,7 @@ cmd(
         filename: __filename,
     },
     async (
-        zanta,
+        nilu,
         mek,
         m,
         {
@@ -60,14 +60,14 @@ cmd(
             reply(`*${targetJid.split('@')[0]} ගේ Profile Picture එක සොයමින්...* 🔍`);
 
             // 2. Profile Picture URL එක ලබා ගැනීම
-            const profilePictureUrl = await zanta.profilePictureUrl(targetJid, 'image');
+            const profilePictureUrl = await nilu.profilePictureUrl(targetJid, 'image');
 
             if (!profilePictureUrl) {
                 return reply(`*❌ ${targetJid.split('@')[0]} ගේ DP එකක් සොයාගත නොහැක.*`);
             }
             
             // 3. Image එක Resend කිරීම
-            await zanta.sendMessage(from, {
+            await nilu.sendMessage(from, {
                 image: { url: profilePictureUrl },
                 caption: `*✅ ${targetJid.includes('@g.us') ? 'Group' : targetJid.split('@')[0]} ගේ Profile Picture එක.*`
             }, { quoted: mek });

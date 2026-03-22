@@ -8,13 +8,13 @@ cmd({
     category: "main",
     react: "🔄",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply, sender, isOwner }) => {
+}, async (nilu, mek, m, { from, reply, sender, isOwner }) => {
 
     try {
         // --- 🆔 නිවැරදි ID එක ලබා ගැනීම ---
         // sender පාවිච්චි නොකර බොට්ගේ සැබෑ ID එක මෙතැනින් ලබා ගනී
-        // zanta.user.id එකෙන් "9471234567:4@s.whatsapp.net" වැනි එකක් ආවත් එය පිරිසිදු කර අංකය පමණක් ගනී.
-        const botNumber = zanta.user.id.split(":")[0].split("@")[0];
+        // nilu.user.id එකෙන් "9471234567:4@s.whatsapp.net" වැනි එකක් ආවත් එය පිරිසිදු කර අංකය පමණක් ගනී.
+        const botNumber = nilu.user.id.split(":")[0].split("@")[0];
 
         // --- 🛡️ අයිතිකරු පමණක්දැයි පරීක්ෂාව (Security) ---
         // සෙටින්ග්ස් රීසෙට් කිරීම අයිතිකරුට පමණක් සීමා කිරීම වඩාත් ආරක්ෂිතයි.
@@ -63,7 +63,7 @@ cmd({
             }
 
             // 3. UI Status Update
-            await zanta.sendPresenceUpdate("unavailable");
+            await nilu.sendPresenceUpdate("unavailable");
 
             return reply(`✅ *SUCCESSFULLY RESET!*\n\nID: *${botNumber}* සඳහා වූ සියලුම settings සාර්ථකව මුල් තත්වයට පත් කරන ලදී.`);
         } else {

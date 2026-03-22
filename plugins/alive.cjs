@@ -30,7 +30,7 @@ cmd({
     category: "main",
     filename: __filename
 },
-async (zanta, mek, m, { from, reply,q, userSettings }) => {
+async (nilu, mek, m, { from, reply,q, userSettings }) => {
     try {
         const moment = require("moment-timezone")
  const time = moment(moment())
@@ -80,7 +80,7 @@ if (time2 < "05:00:00") {
             const vBuffer = Buffer.from(vResponse.data, 'utf-8');
 
             // voice එක ගිහින් ඉවර වෙනකම් await එකෙන් ඉන්නවා
-            await zanta.sendMessage(from, { 
+            await nilu.sendMessage(from, { 
                 audio: vBuffer, 
                 mimetype: 'audio/mpeg', 
                 ptt: false, 
@@ -101,7 +101,7 @@ if (time2 < "05:00:00") {
 
         if (isButtonsOn) {
             // --- 🔵 BUTTONS ON MODE ---
-            return await zanta.sendMessage(from, {
+            return await nilu.sendMessage(from, {
                 image: imageToDisplay, 
                 caption: finalMsg,
                 footer: `© ᴘᴏᴡᴇʀᴅ ʙʏ ǫᴜᴇᴇɴ-ɴɪʟᴜ-ᴍᴅ`,
@@ -125,7 +125,7 @@ if (time2 < "05:00:00") {
 
         } else {
             // --- 🟢 BUTTONS OFF MODE ---
-            return await zanta.sendMessage(from, {
+            return await nilu.sendMessage(from, {
                 image: imageToDisplay,
                 caption: finalMsg,
                 contextInfo: {

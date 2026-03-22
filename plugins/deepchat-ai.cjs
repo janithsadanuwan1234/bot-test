@@ -14,7 +14,7 @@ cmd({
 
         await bot.sendMessage(from, { react: { text: "🧠", key: m.key } });
 
-        const API_URL = `https://zanta-api.vercel.app/api/deepchat?text=${encodeURIComponent(q)}`;
+        const API_URL = `https://nilu-api.vercel.app/api/deepchat?text=${encodeURIComponent(q)}`;
         const { data } = await axios.get(API_URL);
 
         if (!data.status || !data.result) {

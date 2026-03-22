@@ -13,7 +13,7 @@ cmd(
         filename: __filename,
     },
     async (
-        zanta,
+        nilu,
         mek,
         m,
         {

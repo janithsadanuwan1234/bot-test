@@ -37,14 +37,14 @@ cmd({
     category: "main",
     filename: __filename,
 },
-async (zanta, mek, m, { from, userSettings }) => {
+async (nilu, mek, m, { from, userSettings }) => {
     try {
         const startTime = Date.now();
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
 
         // Loading message
-        const loadingMsg = await zanta.sendMessage(from, { text: "⚙️ *Checking System Status...*" }, { quoted: mek });
+        const loadingMsg = await nilu.sendMessage(from, { text: "⚙️ *Checking System Status...*" }, { quoted: mek });
 
         const memoryUsage = process.memoryUsage();
         const latency = Date.now() - startTime;
@@ -71,13 +71,13 @@ async (zanta, mek, m, { from, userSettings }) => {
         }
 
         // අවසාන පණිවිඩය රූපය සමඟ යැවීම
-        await zanta.sendMessage(from, {
+        await nilu.sendMessage(from, {
             image: imageToDisplay,
             caption: statusMessage
         }, { quoted: mek });
 
         // පැරණි පණිවිඩය මැකීම
-        await zanta.sendMessage(from, { delete: loadingMsg.key });
+        await nilu.sendMessage(from, { delete: loadingMsg.key });
 
     } catch (e) {
         console.error("[PING ERROR]", e);

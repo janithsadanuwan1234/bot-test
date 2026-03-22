@@ -13,7 +13,7 @@ cmd(
         category: "main",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, sender, isGroup, userSettings }) => {
+    async (nilu, mek, m, { from, sender, isGroup, userSettings }) => {
         try {
             const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
             const botName =
@@ -60,7 +60,7 @@ cmd(
 
             jidMsg += `\n> *© ${botName}*`;
 
-            await zanta.sendMessage(
+            await nilu.sendMessage(
                 from,
                 { text: jidMsg, mentions: [sender, targetJid] },
                 { quoted: mek },
@@ -79,7 +79,7 @@ cmd({
     use: ".cjid <channel-link>",
     filename: __filename
 },
-async (zanta, mek, m, { from, args, q, reply, isOwner }) => {
+async (nilu, mek, m, { from, args, q, reply, isOwner }) => {
     try {
         // අයිතිකරුට පමණක් අවසර ලබා දීම (අවශ්‍ය නම් පමණක්)
         if (!isOwner) return reply("⚠️ This command is for my Owner only.");
@@ -92,7 +92,7 @@ async (zanta, mek, m, { from, args, q, reply, isOwner }) => {
         }
 
         // Newsletter Metadata හරහා JID එක ලබා ගැනීම
-        const res = await zanta.newsletterMetadata("invite", q.split("channel/")[1]);
+        const res = await nilu.newsletterMetadata("invite", q.split("channel/")[1]);
 
         if (res && res.id) {
             let msg = `✨ *QUEEN-NILU-MD CHANNEL JID* ✨\n\n`;
@@ -118,14 +118,14 @@ cmd(
         category: "main",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, userSettings }) => {
+    async (nilu, mek, m, { from, userSettings }) => {
         try {
             const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
             const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD";
             const startTime = Date.now();
 
             // මුලින්ම පණිවිඩය යවයි
-            const pinger = await zanta.sendMessage(
+            const pinger = await nilu.sendMessage(
                 from,
                 { text: "🚀 *Checking...*" },
                 { quoted: mek },
@@ -133,7 +133,7 @@ cmd(
             const ping = Date.now() - startTime;
 
             // Edit කරන මැසේජ් එකට Channel Context එක එකතු කිරීම
-            await zanta.sendMessage(from, {
+            await nilu.sendMessage(from, {
                 text: `⚡ *${botName} SPEED*\n\n🚄 *Latency:* ${ping}ms\n📡 *Status:* Online\n\n> *© ${botName}*`,
                 edit: pinger.key,
                 contextInfo: {
@@ -161,7 +161,7 @@ cmd(
         category: "tools",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, reply, q, userSettings }) => {
+    async (nilu, mek, m, { from, reply, q, userSettings }) => {
         try {
             const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
             const botName =
@@ -171,14 +171,14 @@ cmd(
             if (!text)
                 return reply("❤️ *පණිවිඩයකට Reply කරන්න හෝ වචනයක් ලබා දෙන්න.*");
 
-            const loading = await zanta.sendMessage(
+            const loading = await nilu.sendMessage(
                 from,
                 { text: "🔠 *Translating...*" },
                 { quoted: mek },
             );
             const result = await translate(text, { to: "si" });
 
-            await zanta.sendMessage(from, {
+            await nilu.sendMessage(from, {
                 text: `${result.text}\n\n> *© ${botName}*`,
                 edit: loading.key,
             });
@@ -197,7 +197,7 @@ cmd(
         category: "main",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, reply, userSettings }) => {
+    async (nilu, mek, m, { from, reply, userSettings }) => {
         try {
             const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
             const botName =
@@ -231,7 +231,7 @@ cmd(
 > *𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>*`;
 
             // මැසේජ් එක යැවීම
-            await zanta.sendMessage(
+            await nilu.sendMessage(
                 from,
                 {
                     image: logoBuffer, // ඔයාගේ ලෝගෝ එකම මේකටත් පාවිච්චි කළා
@@ -254,7 +254,7 @@ cmd(
         desc: "Download files from a direct link.",
         filename: __filename,
     },
-    async (zanta, mek, m, { from, q, reply }) => {
+    async (nilu, mek, m, { from, q, reply }) => {
         if (!q)
             return reply(
                 "❌ කරුණාකර Direct Download Link එකක් ලබා දෙන්න.\n\n*Ex:* .directdl https://example.com/file.pdf",
@@ -288,7 +288,7 @@ cmd(
             });
 
             // File එක Document එකක් විදිහට Stream එක හරහා යැවීම
-            await zanta.sendMessage(
+            await nilu.sendMessage(
                 from,
                 {
                     document: { stream: response.data },
@@ -300,7 +300,7 @@ cmd(
                 { quoted: mek },
             );
 
-            await zanta.sendMessage(from, { react: { text: "✅", key: mek.key } });
+            await nilu.sendMessage(from, { react: { text: "✅", key: mek.key } });
 
         } catch (e) {
             console.error(e);

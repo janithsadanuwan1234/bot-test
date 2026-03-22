@@ -16,7 +16,7 @@ cmd({
 
         await bot.sendMessage(from, { react: { text: "🔍", key: mek.key } });
 
-        const apiUrl = `https://zanta-api.vercel.app/api/insta?url=${encodeURIComponent(q)}`;
+        const apiUrl = `https://nilu-api.vercel.app/api/insta?url=${encodeURIComponent(q)}`;
         const response = await axios.get(apiUrl);
 
         if (response.data && response.data.status) {
