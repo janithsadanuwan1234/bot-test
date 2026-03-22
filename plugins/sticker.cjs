@@ -10,20 +10,22 @@ const { execFile } = require("child_process");
 const tempDir = path.join(__dirname, "../temp");
 if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
-// 🔍 Get media (fixed reliable version)
+// 🔍 Get media (fixed reliable version including stickers)
 const getMediaMessage = (msg) => {
     let quoted = msg.quoted || msg;
-
     let m = quoted?.message || quoted;
 
+    // Check for image/video/sticker
     if (m?.imageMessage) return { message: { imageMessage: m.imageMessage }, type: "image" };
     if (m?.videoMessage) return { message: { videoMessage: m.videoMessage }, type: "video" };
+    if (m?.stickerMessage) return { message: { stickerMessage: m.stickerMessage }, type: "sticker" };
 
+    // Check if quoted message has media
     if (m?.extendedTextMessage?.contextInfo?.quotedMessage) {
         let q = m.extendedTextMessage.contextInfo.quotedMessage;
-
         if (q.imageMessage) return { message: { imageMessage: q.imageMessage }, type: "image" };
         if (q.videoMessage) return { message: { videoMessage: q.videoMessage }, type: "video" };
+        if (q.stickerMessage) return { message: { stickerMessage: q.stickerMessage }, type: "sticker" };
     }
 
     return null;
