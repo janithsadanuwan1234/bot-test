@@ -35,7 +35,7 @@ async (zanta, mek, m, { from, reply, args, userSettings }) => {
         const settings = userSettings || global.CURRENT_BOT_SETTINGS || {};
         const finalPrefix = settings.prefix || config.DEFAULT_PREFIX || '.'; 
         const botName = settings.botName || config.DEFAULT_BOT_NAME || "QUEEN-NILU-MD"; 
-        const ownerName = settings.ownerName || config.DEFAULT_OWNER_NAME || 'Akash Kavindu';
+        const ownerName = settings.ownerName || config.DEFAULT_OWNER_NAME || 'Janith sadanuwan';
         const mode = (settings.workType || "Public").toUpperCase();
         const isButtonsOn = settings.buttons === 'true';
 

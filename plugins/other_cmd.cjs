@@ -205,20 +205,20 @@ cmd(
 
             // ලෝගෝ එක Buffer එකක් ලෙස ලබා ගැනීම
             let logoRes = await axios.get(
-                "https://github.com/Akashkavindu/MINI-BOT-SOURCE/raw/main/IMG_1688.jpg",
+                "https://telegra.ph/file/1e63f0ee90304a12767c7.jpg",
                 { responseType: "arraybuffer" },
             );
             let logoBuffer = Buffer.from(logoRes.data, "binary");
 
             // ඔයාගේ විස්තර මෙතන ලස්සනට දාන්න පුළුවන්
-            let ownerMsg = `👑 *|${botName.toUpperCase()} OWNER INFO|* 👑
-
-👤 *Name:* Akash kavindu
-🌍 *Location:* Mawanella
+            let ownerMsg = `👑 *|${botName.toUpperCase()} DEVELOPER INFO|* 👑
+      
+👤 *Name:* Janith sadanuwan
+🌍 *Location:* sri lanka 
 📱 *WhatsApp:* 94743404814
-🙃 *Nick name:* Zanta
+🙃 *Nick name:* Janiya
 
-> *©️ 𝐙𝐀𝐍𝐓𝐀 𝐎𝐅𝐂*`;
+> *𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>*`;
 
             // මැසේජ් එක යැවීම
             await zanta.sendMessage(
