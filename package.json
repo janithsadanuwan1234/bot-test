@@ -12,6 +12,7 @@
   "dependencies": {
     "@faouzkk/tiktok-dl": "^1.0.1",
     "@vitalets/google-translate-api": "^9.2.1",
+    "wa-sticker-formatter": "^4.4.4",
     "@xaviabot/fb-downloader": "^1.0.14",
     "@whiskeysockets/baileys": "npm:gifted-baileys@2.0.4",
     "@google/generative-ai": "^0.24.1",
