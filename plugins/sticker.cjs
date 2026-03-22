@@ -165,7 +165,6 @@ async (conn, mek, m, { from, reply }) => {
 
         if (!media || media.type !== "sticker") return reply("❌ Reply to sticker");
 
-        reply("⏳ Converting...");
 
         const buffer = await downloadMediaMessage(
             media,
