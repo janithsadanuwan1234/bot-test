@@ -599,6 +599,7 @@ async function connectToWA(sessionData) {
             const gmKeywords = ['gm', 'good morning', 'සුබ උදෑසනක්', 'morning', 'monin'];
             const mokoKeywords = ['mk', 'moko karanne', 'moko venne'];
             const gnKeywords = ['gn', 'good night'];
+            const hiKeywords = [ 'හලො', 'හායි', 'hi'];
             const checkMatch = (keywords) => {
                 return keywords.some(word => {
                     const regex = new RegExp(`\\b${word}\\b`, 'i'); 
@@ -606,13 +607,16 @@ async function connectToWA(sessionData) {
                 });
             };
             if (checkMatch(gmKeywords)) {
-                audioUrl = 'https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/gm-new.mp3'; 
+                audioUrl = 'https://raw.githubusercontent.com/Dragonxjanith/UPLOADS/main/VOICE/gm.mp3'; 
             }
             else if (checkMatch(mokoKeywords)) {
-                audioUrl = 'https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/mn.mp3';
+                audioUrl = 'https://raw.githubusercontent.com/Dragonxjanith/UPLOADS/main/VOICE/mn.mp3';
             }
             else if (checkMatch(gnKeywords)) {
-                audioUrl = 'https://raw.githubusercontent.com/Akashkavindu/MINI-BOT-SOURCE/main/gn.mp3';
+                audioUrl = 'https://raw.githubusercontent.com/Dragonxjanith/UPLOADS/main/VOICE/gn.mp3';
+            }
+                 if (checkMatch(hiKeywords)) {
+                audioUrl = 'https://raw.githubusercontent.com/Dragonxjanith/UPLOADS/main/VOICE/hi.mp3'; 
             }
 
             if (audioUrl) {
