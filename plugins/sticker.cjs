@@ -1,8 +1,8 @@
 const { cmd } = require("../command.cjs");
 const fs = require("fs");
 const path = require("path");
-const ffmpeg = require("fluent-ffmpeg");
 const ffmpegPath = require("ffmpeg-static");
+const ffmpeg = require("fluent-ffmpeg");
 const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
 
 ffmpeg.setFfmpegPath(ffmpegPath);
@@ -10,56 +10,62 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const tempDir = path.join(__dirname, "../temp");
 if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
-/**
- * Safe delete
- */
-const safeDelete = (file) => {
-    try {
-        if (fs.existsSync(file)) fs.unlinkSync(file);
-    } catch {}
-};
-
-/**
- * Download media buffer
- */
+/* ============================= */
+/* 📥 DOWNLOAD MEDIA (FIXED) */
+/* ============================= */
 const downloadMedia = async (msg, type) => {
     try {
         const stream = await downloadContentFromMessage(msg, type);
         let buffer = Buffer.from([]);
+
         for await (const chunk of stream) {
             buffer = Buffer.concat([buffer, chunk]);
         }
+
         return buffer;
     } catch (e) {
-        console.log("Download error:", e);
+        console.log("Download Error:", e);
         return null;
     }
 };
 
-/**
- * 🔥 BEST MEDIA DETECTOR (handles all cases)
- */
+/* ============================= */
+/* 🔍 GET MEDIA (FULL FIX) */
+/* ============================= */
 const getMedia = (m) => {
-    let msg = m?.quoted?.message || m?.message || {};
+    try {
+        let msg = m?.message || m;
 
-    // unwrap special types
-    if (msg?.ephemeralMessage) msg = msg.ephemeralMessage.message;
-    if (msg?.viewOnceMessage) msg = msg.viewOnceMessage.message;
+        // viewOnce support
+        if (msg?.viewOnceMessage) {
+            msg = msg.viewOnceMessage.message;
+        }
 
-    if (!msg) return null;
+        // direct
+        if (msg?.imageMessage) return { data: msg.imageMessage, type: "image" };
+        if (msg?.videoMessage) return { data: msg.videoMessage, type: "video" };
+        if (msg?.stickerMessage) return { data: msg.stickerMessage, type: "sticker" };
 
-    if (msg.imageMessage) return { data: msg.imageMessage, type: "image", ext: "jpg" };
-    if (msg.videoMessage) return { data: msg.videoMessage, type: "video", ext: "mp4" };
-    if (msg.stickerMessage) return { data: msg.stickerMessage, type: "sticker", ext: "webp" };
+        // quoted
+        let quoted = msg?.extendedTextMessage?.contextInfo?.quotedMessage;
 
-    return null;
+        if (quoted?.viewOnceMessage) {
+            quoted = quoted.viewOnceMessage.message;
+        }
+
+        if (quoted?.imageMessage) return { data: quoted.imageMessage, type: "image" };
+        if (quoted?.videoMessage) return { data: quoted.videoMessage, type: "video" };
+        if (quoted?.stickerMessage) return { data: quoted.stickerMessage, type: "sticker" };
+
+        return null;
+    } catch {
+        return null;
+    }
 };
 
-
-
-/* =========================
-   🖼️ IMAGE/VIDEO → STICKER
-========================= */
+/* ============================= */
+/* 🖼️ IMAGE/VIDEO → STICKER */
+/* ============================= */
 cmd({
     pattern: "sticker",
     alias: ["s", "st"],
@@ -67,113 +73,108 @@ cmd({
     desc: "Convert media to sticker",
     category: "convert",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply }) => {
+},
+async (zanta, mek, m, { from, reply }) => {
     try {
         const media = getMedia(m);
 
-        if (!media || (media.type !== "image" && media.type !== "video")) {
-            return reply("*Reply to image/video or send one* ❌");
+        if (!media || !["image", "video"].includes(media.type)) {
+            return reply("*Reply to an image or video* ❌");
         }
 
-        reply("*Creating sticker...* ⏳");
+        reply("*Processing...* ⏳");
 
         const buffer = await downloadMedia(media.data, media.type);
         if (!buffer) return reply("Download failed ❌");
 
-        const input = path.join(tempDir, `in_${Date.now()}.${media.ext}`);
-        const output = path.join(tempDir, `out_${Date.now()}.webp`);
+        const inPath = path.join(tempDir, `input_${Date.now()}.${media.type === "image" ? "jpg" : "mp4"}`);
+        const outPath = path.join(tempDir, `output_${Date.now()}.webp`);
 
-        fs.writeFileSync(input, buffer);
+        fs.writeFileSync(inPath, buffer);
 
-        ffmpeg(input)
+        ffmpeg(inPath)
+            .outputOptions([
+                "-vcodec libwebp",
+                "-vf scale=512:512:force_original_aspect_ratio=decrease," +
+                "pad=512:512:(ow-iw)/2:(oh-ih)/2:color=white@0.0",
+                "-loop 0",
+                "-ss 00:00:00",
+                "-t 10",
+                "-preset default",
+                "-an",
+                "-vsync 0"
+            ])
             .on("end", async () => {
-                await zanta.sendMessage(
-                    from,
-                    {
-                        sticker: fs.readFileSync(output),
-                        packname: "QUEEN-NILU-MD",
-                        author: "Sticker-Bot",
-                    },
-                    { quoted: mek }
-                );
+                await zanta.sendMessage(from, {
+                    sticker: fs.readFileSync(outPath),
+                    packname: "QUEEN-NILU-MD",
+                    author: "Sticker-Bot"
+                }, { quoted: mek });
 
-                safeDelete(input);
-                safeDelete(output);
+                fs.unlinkSync(inPath);
+                fs.unlinkSync(outPath);
             })
             .on("error", (err) => {
-                console.log("FFmpeg error:", err);
-                reply("Conversion failed ❌");
-                safeDelete(input);
-                safeDelete(output);
+                console.log(err);
+                reply("FFmpeg Error ❌");
+                if (fs.existsSync(inPath)) fs.unlinkSync(inPath);
             })
-            .addOutputOptions([
-                "-vcodec", "libwebp",
-                "-vf",
-                "scale=320:320:force_original_aspect_ratio=decrease," +
-                "pad=320:320:(ow-iw)/2:(oh-ih)/2:color=white@0.0"
-            ])
-            .save(output);
+            .save(outPath);
 
     } catch (e) {
         console.log(e);
-        reply("Error occurred ❌");
+        reply("Error ❌");
     }
 });
 
-
-
-/* =========================
-   🎡 STICKER → IMAGE
-========================= */
+/* ============================= */
+/* 🎡 STICKER → IMAGE */
+/* ============================= */
 cmd({
     pattern: "toimg",
     react: "🖼️",
-    desc: "Convert sticker to image",
+    desc: "Sticker to image",
     category: "convert",
     filename: __filename,
-}, async (zanta, mek, m, { from, reply }) => {
+},
+async (zanta, mek, m, { from, reply }) => {
     try {
         const media = getMedia(m);
 
         if (!media || media.type !== "sticker") {
-            return reply("*Reply to sticker* ❌");
+            return reply("*Reply to a sticker* ❌");
         }
 
-        reply("*Converting...* ⏳");
+        reply("*Processing...* ⏳");
 
         const buffer = await downloadMedia(media.data, "sticker");
         if (!buffer) return reply("Download failed ❌");
 
-        const input = path.join(tempDir, `in_${Date.now()}.webp`);
-        const output = path.join(tempDir, `out_${Date.now()}.png`);
+        const inPath = path.join(tempDir, `input_${Date.now()}.webp`);
+        const outPath = path.join(tempDir, `output_${Date.now()}.png`);
 
-        fs.writeFileSync(input, buffer);
+        fs.writeFileSync(inPath, buffer);
 
-        ffmpeg(input)
+        ffmpeg(inPath)
             .on("end", async () => {
-                await zanta.sendMessage(
-                    from,
-                    {
-                        image: fs.readFileSync(output),
-                        caption: "> *Converted Successfully*",
-                    },
-                    { quoted: mek }
-                );
+                await zanta.sendMessage(from, {
+                    image: fs.readFileSync(outPath),
+                    caption: "> *Converted Successfully*"
+                }, { quoted: mek });
 
-                safeDelete(input);
-                safeDelete(output);
+                fs.unlinkSync(inPath);
+                fs.unlinkSync(outPath);
             })
             .on("error", (err) => {
-                console.log("FFmpeg error:", err);
-                reply("Conversion failed ❌");
-                safeDelete(input);
-                safeDelete(output);
+                console.log(err);
+                reply("FFmpeg Error ❌");
+                if (fs.existsSync(inPath)) fs.unlinkSync(inPath);
             })
-            .save(output);
+            .save(outPath);
 
     } catch (e) {
         console.log(e);
-        reply("Error occurred ❌");
+        reply("Error ❌");
     }
 });
 
