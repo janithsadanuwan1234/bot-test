@@ -6,21 +6,20 @@ const {
 const fs = require("fs");
 const path = require("path");
 const { execFile } = require("child_process");
+const { Sticker } = require("wa-sticker-formatter"); // ✅ NEW
 
 const tempDir = path.join(__dirname, "../temp");
 if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
-// 🔍 Get media (fixed reliable version including stickers)
+// 🔍 Get media
 const getMediaMessage = (msg) => {
     let quoted = msg.quoted || msg;
     let m = quoted?.message || quoted;
 
-    // Check for image/video/sticker
     if (m?.imageMessage) return { message: { imageMessage: m.imageMessage }, type: "image" };
     if (m?.videoMessage) return { message: { videoMessage: m.videoMessage }, type: "video" };
     if (m?.stickerMessage) return { message: { stickerMessage: m.stickerMessage }, type: "sticker" };
 
-    // Check if quoted message has media
     if (m?.extendedTextMessage?.contextInfo?.quotedMessage) {
         let q = m.extendedTextMessage.contextInfo.quotedMessage;
         if (q.imageMessage) return { message: { imageMessage: q.imageMessage }, type: "image" };
@@ -42,16 +41,14 @@ cmd({
 },
 async (conn, mek, m, { from, reply, body }) => {
     try {
-        // ----- Mode -----
         const formatArg = body.split(" ")[1]?.toLowerCase() || "fit";
         const allowedModes = ["fit", "crop", "circle", "stretch", "nobg"];
         const mode = allowedModes.includes(formatArg) ? formatArg : "fit";
 
         let media = getMediaMessage(mek);
-
         if (!media) return reply("❌ Reply to image/video or send with caption");
 
-        // 📥 Download media
+        // 📥 Download
         const buffer = await downloadMediaMessage(
             media,
             "buffer",
@@ -99,7 +96,7 @@ async (conn, mek, m, { from, reply, body }) => {
                     "pad=512:512:(ow-iw)/2:(oh-ih)/2:color=black@0";
         }
 
-        // ⚙️ FFmpeg args
+        // ⚙️ FFmpeg
         const args = media.type === "image"
             ? [
                 "-i", input,
@@ -126,7 +123,6 @@ async (conn, mek, m, { from, reply, body }) => {
                 output
             ];
 
-        // ▶ Run ffmpeg
         await new Promise((resolve, reject) => {
             execFile("ffmpeg", args, (err) => {
                 if (err) return reject(err);
@@ -134,11 +130,21 @@ async (conn, mek, m, { from, reply, body }) => {
             });
         });
 
-        // 📤 Send sticker
+        // ✅ CREATE STICKER WITH METADATA
+        const sticker = new Sticker(fs.readFileSync(output), {
+            pack: "Created By",
+            author: "Queen Nilu MD",
+            type: "full",
+            categories: ["🌟"],
+            id: "queen-nilu-md",
+            quality: 80
+        });
+
+        const stickerBuffer = await sticker.toBuffer();
+
+        // 📤 SEND
         await conn.sendMessage(from, {
-            sticker: fs.readFileSync(output),
-            packname: "QUEEN-NILU-MD",
-            author: "Sticker-Bot"
+            sticker: stickerBuffer
         }, { quoted: mek });
 
         // 🧹 Cleanup
@@ -162,9 +168,7 @@ cmd({
 async (conn, mek, m, { from, reply }) => {
     try {
         let media = getMediaMessage(mek);
-
         if (!media || media.type !== "sticker") return reply("❌ Reply to sticker");
-
 
         const buffer = await downloadMediaMessage(
             media,
