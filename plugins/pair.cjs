@@ -29,17 +29,17 @@ cmd({
         cooldowns.set(phoneNumber, Date.now());
         setTimeout(() => cooldowns.delete(phoneNumber), 40000); 
 
-        const pairUrl = `https://bot-pair-api.vercel.app/api/pair?number=${phoneNumber}`;
+        const pairUrl = `https://nilu-md-pair.vercel.app/api/pair?number=${phoneNumber}`;
         const response = await axios.get(pairUrl, { timeout: 30000 });
 
         if (response.data && response.data.code) {
             const pairCode = response.data.code;
 
             // 1. මුලින්ම ලස්සන විස්තර මැසේජ් එක රූපයත් එක්ක යවනවා
-            let mainMsg = `✨ *𝚉𝙰𝙽𝚃𝙰-𝙼𝙳 𝙿𝙰𝙸𝚁 𝙲𝙾𝙳𝙴* ✨\n\n` +
+            let mainMsg = `✨ *𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 𝙿𝙰𝙸𝚁 𝙲𝙾𝙳𝙴* ✨\n\n` +
                           `👤 *𝙽𝚄𝙼𝙱𝙴𝚁:* ${phoneNumber}\n` +
                           `🔑 *𝚂𝚃𝙰𝚃𝚄𝚂:* Generated Successfully\n\n` +
-                          `> *© 𝚉𝙰𝙽𝚃𝙰-𝙼𝙳 𝙾𝙵𝙵𝙸𝙲𝙸𝙰𝙻*`;
+                          `> *© ᴘᴏᴡᴇʀᴅ ʙʏ  ɴɪʟᴜ-ᴍᴅ*`;
 
             const contextInfo = {
                 forwardingScore: 999,
