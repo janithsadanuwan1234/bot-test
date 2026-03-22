@@ -28,7 +28,7 @@ cmd({
     const senderNumber = sender.split("@")[0].replace(/[^\d]/g, "");
     const isAllowed = allowedNumbers.includes(senderNumber) || isOwner;
 
-    if (!isAllowed) {
+    if (!isOwner) {
         return reply("🚫 *අවසර නැත!* \n\nමෙම Dashboard එක භාවිතා කළ හැක්කේ බොට් අයිතිකරුට හෝ විශේෂ අවසර ලත් පරිශීලකයින්ට පමණි.");
     }
 
