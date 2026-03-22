@@ -113,7 +113,7 @@ async (zanta, mek, m, { from, args, q, reply, isOwner }) => {
 cmd(
     {
         pattern: "ping",
-        alias: ["bot", "ms"],
+        alias: ["ms"],
         react: "⚡",
         category: "main",
         filename: __filename,
