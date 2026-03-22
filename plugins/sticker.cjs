@@ -49,8 +49,6 @@ async (conn, mek, m, { from, reply, body }) => {
 
         if (!media) return reply("❌ Reply to image/video or send with caption");
 
-        reply("⏳ Creating sticker...");
-
         // 📥 Download media
         const buffer = await downloadMediaMessage(
             media,
