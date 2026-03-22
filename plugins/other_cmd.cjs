@@ -213,10 +213,20 @@ cmd(
             // ඔයාගේ විස්තර මෙතන ලස්සනට දාන්න පුළුවන්
             let ownerMsg = `👑 *|${botName.toUpperCase()} DEVELOPER INFO|* 👑
       
-👤 *Name:* Janith sadanuwan
-🌍 *Location:* sri lanka 
-📱 *WhatsApp:* 94743404814
-🙃 *Nick name:* Janiya
+🔮MAIN DEVELOPER
+
+👤 Name: ᴊᴀɴɪᴛʜ ꜱᴀᴅᴀɴᴜᴡᴀɴ
+🌍 Location: 🇱🇰
+📱 WhatsApp:
++94788175828
+🧬Nick name: ᴊᴀɴɪʏᴀ
+
+🔮CO- DEVELOPER
+
+👤 Name: ʜᴇꜱʜᴀɴ ʏᴀꜱᴀꜱʀɪ
+🌍 Location:🇱🇰
+📱 WhatsApp: +94 77 583 2373
+🧬 Nick name: ʏᴀꜱᴀxꜱʀɪ
 
 > *𝑸𝑼𝑬𝑬𝑵 𝑵𝑰𝑳𝑼 𝑴𝑫 </>*`;
 
