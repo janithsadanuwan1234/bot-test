@@ -1,8 +1,8 @@
 const { cmd } = require("../command.cjs");
 const fs = require("fs");
 const path = require("path");
-const ffmpegPath = require("ffmpeg-static");
 const ffmpeg = require("fluent-ffmpeg");
+const ffmpegPath = require("ffmpeg-static");
 const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
 
 ffmpeg.setFfmpegPath(ffmpegPath);
@@ -13,12 +13,14 @@ if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 /**
  * Safe delete
  */
-const safeUnlink = (file) => {
-    if (fs.existsSync(file)) fs.unlinkSync(file);
+const safeDelete = (file) => {
+    try {
+        if (fs.existsSync(file)) fs.unlinkSync(file);
+    } catch {}
 };
 
 /**
- * Download media (FIXED)
+ * Download media buffer
  */
 const downloadMedia = async (msg, type) => {
     try {
@@ -35,93 +37,100 @@ const downloadMedia = async (msg, type) => {
 };
 
 /**
- * NEW: Better media detection (LATEST BAILEYS FIX)
+ * 🔥 BEST MEDIA DETECTOR (handles all cases)
  */
 const getMedia = (m) => {
-    if (!m) return null;
+    let msg = m?.quoted?.message || m?.message || {};
 
-    const msg = m.message || m.msg || m;
+    // unwrap special types
+    if (msg?.ephemeralMessage) msg = msg.ephemeralMessage.message;
+    if (msg?.viewOnceMessage) msg = msg.viewOnceMessage.message;
 
-    if (msg?.imageMessage) return { data: msg.imageMessage, type: "image" };
-    if (msg?.videoMessage) return { data: msg.videoMessage, type: "video" };
-    if (msg?.stickerMessage) return { data: msg.stickerMessage, type: "sticker" };
+    if (!msg) return null;
 
-    const quoted = msg?.extendedTextMessage?.contextInfo?.quotedMessage;
-
-    if (quoted?.imageMessage) return { data: quoted.imageMessage, type: "image" };
-    if (quoted?.videoMessage) return { data: quoted.videoMessage, type: "video" };
-    if (quoted?.stickerMessage) return { data: quoted.stickerMessage, type: "sticker" };
+    if (msg.imageMessage) return { data: msg.imageMessage, type: "image", ext: "jpg" };
+    if (msg.videoMessage) return { data: msg.videoMessage, type: "video", ext: "mp4" };
+    if (msg.stickerMessage) return { data: msg.stickerMessage, type: "sticker", ext: "webp" };
 
     return null;
 };
 
 
-// =======================================
-// 1. IMAGE/VIDEO → STICKER
-// =======================================
+
+/* =========================
+   🖼️ IMAGE/VIDEO → STICKER
+========================= */
 cmd({
     pattern: "sticker",
     alias: ["s", "st"],
     react: "🌟",
     desc: "Convert media to sticker",
     category: "convert",
-    filename: __filename
+    filename: __filename,
 }, async (zanta, mek, m, { from, reply }) => {
     try {
         const media = getMedia(m);
 
-        if (!media) return reply("*Reply to image/video* ❌");
+        if (!media || (media.type !== "image" && media.type !== "video")) {
+            return reply("*Reply to image/video or send one* ❌");
+        }
 
-        reply("*Processing...* ⏳");
+        reply("*Creating sticker...* ⏳");
 
         const buffer = await downloadMedia(media.data, media.type);
-        if (!buffer) return reply("❌ Failed to download media");
+        if (!buffer) return reply("Download failed ❌");
 
-        const input = path.join(tempDir, `in_${Date.now()}.${media.type === "image" ? "jpg" : "mp4"}`);
+        const input = path.join(tempDir, `in_${Date.now()}.${media.ext}`);
         const output = path.join(tempDir, `out_${Date.now()}.webp`);
 
         fs.writeFileSync(input, buffer);
 
         ffmpeg(input)
             .on("end", async () => {
-                await zanta.sendMessage(from, {
-                    sticker: fs.readFileSync(output),
-                }, { quoted: mek });
+                await zanta.sendMessage(
+                    from,
+                    {
+                        sticker: fs.readFileSync(output),
+                        packname: "QUEEN-NILU-MD",
+                        author: "Sticker-Bot",
+                    },
+                    { quoted: mek }
+                );
 
-                safeUnlink(input);
-                safeUnlink(output);
+                safeDelete(input);
+                safeDelete(output);
             })
             .on("error", (err) => {
-                console.log(err);
-                reply("❌ Conversion failed");
-                safeUnlink(input);
+                console.log("FFmpeg error:", err);
+                reply("Conversion failed ❌");
+                safeDelete(input);
+                safeDelete(output);
             })
             .addOutputOptions([
-                "-vcodec libwebp",
-                "-vf scale=512:512:force_original_aspect_ratio=decrease,fps=15",
-                "-loop 0",
-                "-preset default",
-                "-an",
-                "-vsync 0"
+                "-vcodec", "libwebp",
+                "-vf",
+                "scale=320:320:force_original_aspect_ratio=decrease," +
+                "pad=320:320:(ow-iw)/2:(oh-ih)/2:color=white@0.0"
             ])
             .save(output);
 
     } catch (e) {
         console.log(e);
-        reply("❌ Error occurred");
+        reply("Error occurred ❌");
     }
 });
 
 
-// =======================================
-// 2. STICKER → IMAGE
-// =======================================
+
+/* =========================
+   🎡 STICKER → IMAGE
+========================= */
 cmd({
     pattern: "toimg",
     react: "🖼️",
-    desc: "Sticker to image",
+    desc: "Convert sticker to image",
     category: "convert",
-    filename: __filename
+    filename: __filename,
 }, async (zanta, mek, m, { from, reply }) => {
     try {
         const media = getMedia(m);
@@ -130,10 +139,10 @@ cmd({
             return reply("*Reply to sticker* ❌");
         }
 
-        reply("*Processing...* ⏳");
+        reply("*Converting...* ⏳");
 
         const buffer = await downloadMedia(media.data, "sticker");
-        if (!buffer) return reply("❌ Failed to download");
+        if (!buffer) return reply("Download failed ❌");
 
         const input = path.join(tempDir, `in_${Date.now()}.webp`);
         const output = path.join(tempDir, `out_${Date.now()}.png`);
@@ -142,24 +151,29 @@ cmd({
 
         ffmpeg(input)
             .on("end", async () => {
-                await zanta.sendMessage(from, {
-                    image: fs.readFileSync(output),
-                    caption: "> Converted Successfully ✅"
-                }, { quoted: mek });
+                await zanta.sendMessage(
+                    from,
+                    {
+                        image: fs.readFileSync(output),
+                        caption: "> *Converted Successfully*",
+                    },
+                    { quoted: mek }
+                );
 
-                safeUnlink(input);
-                safeUnlink(output);
+                safeDelete(input);
+                safeDelete(output);
             })
             .on("error", (err) => {
-                console.log(err);
-                reply("❌ Conversion failed");
-                safeUnlink(input);
+                console.log("FFmpeg error:", err);
+                reply("Conversion failed ❌");
+                safeDelete(input);
+                safeDelete(output);
             })
             .save(output);
 
     } catch (e) {
         console.log(e);
-        reply("❌ Error occurred");
+        reply("Error occurred ❌");
     }
 });
 
